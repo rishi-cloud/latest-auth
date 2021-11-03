@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { TealiumTagKeyConstants } from "../constants/TealiumConstants";
+import Cookies from "universal-cookie/es6";
 
 const TrackingContext = React.createContext({});
 
@@ -20,6 +21,8 @@ const getCulture = (location) => {
 };
 
 const TrackingProvider = (props) => {
+  const cookies = new Cookies();
+  cookies.set("ua", { at: "password" }, { path: "/" });
   const location = useLocation().search;
   const [utagData, setUtagData] = useState(
     populateTealiumData(props, location)

@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,600;0,800;1,700&display=swap");
 .SignupWrapper {
-  margin-top: 1rem;
-  margin-left: 1rem;
+  margin-top: 0.5rem;
+  margin-left: 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -27,7 +27,7 @@
   justify-content: flex-start;
 }
 .formWrapper {
-  margin: 0rem 2rem 0rem 1rem;
+  margin: 0rem 0.5rem 0rem 0rem;
 }
 .Heading {
   font-size: 3rem;
@@ -62,8 +62,8 @@
   padding: 0.5rem 1rem;
   border-radius: 1rem;
   margin-left: 0.3rem;
+  width: 100%;
   background-color: white;
-  flex: 1;
   border: 0px solid white;
   color: RGB(38, 41, 77);
   font-size: 1.3rem;
