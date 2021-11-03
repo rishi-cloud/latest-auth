@@ -1,0 +1,39 @@
+.Footer-Container {
+  display: flex;
+  flex-direction: column;
+  background-color: #f9fcff;
+  padding: 2rem;
+}
+.Footer-LeftWrapper {
+  flex: 1;
+  display: flex;
+  font-size: 0.8rem;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+.Footer-RightWrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  color: #b1babf;
+}
+
+.Footer-Link-Container {
+  color: #1671ee;
+  padding: 0 1rem;
+  cursor: pointer;
+  border-right: 1px solid lightgray;
+}
+.Footer-Link-Container:last-child {
+  border-right: unset;
+}
+
+@media only screen and (min-width: 700px) {
+  .Footer-Container {
+    flex-direction: row;
+  }
+  .Footer-LeftWrapper {
+    font-size: 1rem;
+    justify-content: unset;
+  }
+}

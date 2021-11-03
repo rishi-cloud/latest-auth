@@ -1,0 +1,265 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,600;0,800;1,700&display=swap");
+.SignupWrapper {
+  margin-top: 1rem;
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.leftContainer {
+  flex: 1;
+  padding: 1rem 0rem;
+}
+.InputAndLogoSignup {
+  display: flex;
+  margin-top: 2rem;
+  flex-direction: row;
+  padding: 0.5rem 1rem;
+  border-radius: 18px;
+  border: 1px solid RGB(212, 213, 219);
+  color: RGB(38, 41, 77);
+  font-size: inherit;
+  outline: none;
+}
+.RightContainerSignup {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.formWrapper {
+  margin: 0rem 2rem 0rem 1rem;
+}
+.Heading {
+  font-size: 3rem;
+  font-weight: 600;
+  color: red;
+}
+.Intro {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  font-family: "Poppins", sans-serif;
+}
+.IntroSubHeading {
+  display: flex;
+  align-items: center;
+  color: gray;
+  font-size: 1.125rem;
+}
+.PointsHeading {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: gray;
+}
+.Points {
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: grey;
+  margin-bottom: 1rem;
+}
+.Input {
+  padding: 0.5rem 1rem;
+  border-radius: 1rem;
+  margin-left: 0.3rem;
+  background-color: white;
+  flex: 1;
+  border: 0px solid white;
+  color: RGB(38, 41, 77);
+  font-size: 1.3rem;
+  outline: none;
+}
+.InputLabel {
+  position: absolute;
+  font-weight: 600;
+  color: rgb(175, 174, 174);
+  margin-left: 2rem;
+  margin-top: 1.2rem;
+  background-color: #fff;
+  padding: 3px;
+}
+.InputLabelPass {
+  position: absolute;
+  font-weight: 600;
+  color: rgb(175, 174, 174);
+  margin-left: 2rem;
+  margin-top: 1rem;
+  background-color: #fff;
+  padding: 5px;
+}
+.InputWrapper {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.InputLabelCPass {
+  position: absolute;
+  font-weight: 600;
+  color: rgb(175, 174, 174);
+  margin-left: 2rem;
+  margin-top: 1rem;
+  background-color: #fff;
+  padding: 5px;
+}
+.hr {
+  border: none;
+  border-top: 2px dotted rgb(204, 204, 204);
+  color: #fff;
+  background-color: #fff;
+  height: 1px;
+  width: 100%;
+  margin-right: 3rem;
+}
+.PolicyLink {
+  margin: 1rem 0;
+  text-align: center;
+  font-size: 1.1rem;
+}
+
+.SubmitButton {
+  margin-top: 1rem;
+  padding: 1rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: rgb(204, 204, 204);
+  border: 1px solid RGB(212, 213, 219);
+  box-shadow: inset 0 2px 2px 0 rgb(0 0 0 / 5%);
+  font-size: inherit;
+  outline: none;
+  cursor: pointer;
+}
+.SubmitButtonActive {
+  margin-top: 1rem;
+  padding: 1rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: rgb(54, 123, 255);
+  border: 1px solid RGB(212, 213, 219);
+  box-shadow: inset 0 2px 2px 0 rgb(0 0 0 / 5%);
+  font-size: inherit;
+  outline: none;
+  cursor: pointer;
+}
+.Logo {
+  width: 10rem;
+  height: 7rem;
+}
+.Password-rules {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 1rem;
+  background-color: transparent;
+  border-radius: 1.5rem;
+}
+.Rule {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.75rem;
+  font-weight: bold;
+  background-color: #f5f6fa;
+  border-radius: 1rem;
+  padding: 4px 10px;
+  margin: 4px;
+}
+.Rule-text {
+  clear: both;
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-left: 0.5rem;
+  color: #4a4f5d;
+}
+
+.tick {
+  height: 2rem;
+  width: 2rem;
+  color: rgb(54, 230, 54);
+}
+.cancel {
+  height: 2rem;
+  width: 2rem;
+  color: rgb(185, 70, 70);
+}
+.page-link {
+  color: blue;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  margin-top: 0.9rem;
+}
+.page-link:hover {
+  background-color: transparent;
+  color: blue;
+}
+.page-link:focus {
+  border: none;
+  outline: none;
+}
+.BottomHeadingSignUp {
+  display: flex;
+  flex-direction: row;
+  font-family: inherit;
+  border-top: 1px dashed #ced0d6;
+  padding: 0rem 0rem;
+  font-size: 0.875rem;
+  align-items: center;
+}
+
+.loaderWrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.loaderLogo {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-left: 4rem;
+  margin-top: 2rem;
+}
+.loader-creating-your-account {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.loading-logo {
+  height: 5rem;
+  width: 5rem;
+  margin-bottom: 1rem;
+}
+.loading-text {
+  font-weight: 700;
+  font-family: "Poppins", sans-serif;
+  font-size: 2rem;
+}
+
+@media only screen and (min-width: 700px) {
+  .SignupWrapper {
+    margin-top: 2rem;
+    margin-left: 4rem;
+    flex-direction: row;
+  }
+  .RightContainerSignup {
+    flex: 1;
+  }
+  .formWrapper {
+    margin: 0rem 5rem;
+  }
+  .InputWrapper {
+    margin-top: 1.5rem;
+  }
+}
