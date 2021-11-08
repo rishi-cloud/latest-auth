@@ -1,6 +1,31 @@
 import PasswordPolicy from "password-sheriff/lib/policy";
 const charsets = require("password-sheriff").charsets;
 
+export const CapitalLetterCheck = () => {
+  const alphaNumericPolicy = new PasswordPolicy({
+    contains: {
+      expressions: [charsets.upperCase],
+    },
+  });
+  return alphaNumericPolicy;
+};
+export const LowerLetterCheck = () => {
+  const alphaNumericPolicy = new PasswordPolicy({
+    contains: {
+      expressions: [charsets.lowerCase],
+    },
+  });
+  return alphaNumericPolicy;
+};
+export const NumberCheck = () => {
+  const alphaNumericPolicy = new PasswordPolicy({
+    contains: {
+      expressions: [charsets.numbers],
+    },
+  });
+  return alphaNumericPolicy;
+};
+
 export const AlphaNumericCheck = () => {
   const alphaNumericPolicy = new PasswordPolicy({
     contains: {
@@ -68,7 +93,7 @@ export const validatePassword = (
         setIsValid(false);
         copyObj.No_more_than_2_identical_characters_in_a_row = false;
       }
-      if (lengthPolicy.check(value)) {
+      if (lengthPolicy.check(value) && value.length <= 32) {
         copyObj.Length_Check = true;
       } else {
         setIsValid(false);
@@ -96,7 +121,7 @@ export const validatePassword = (
         setIsValid(false);
         copyObj.Non_empty_Password_Required = false;
       }
-      if (lengthPolicy.check(value)) {
+      if (lengthPolicy.check(value) && value.length <= 32) {
         copyObj.Length_Check = true;
       } else {
         setIsValid(false);
@@ -123,7 +148,7 @@ export const validatePassword = (
         setIsValid(false);
         copyObj.Non_empty_Password_Required = false;
       }
-      if (lengthPolicy.check(value)) {
+      if (lengthPolicy.check(value) && value.length <= 32) {
         copyObj.Length_Check = true;
       } else {
         setIsValid(false);
@@ -144,7 +169,7 @@ export const validatePassword = (
         setIsValid(false);
         copyObj.Non_empty_Password_Required = false;
       }
-      if (lengthPolicy.check(value)) {
+      if (lengthPolicy.check(value) && value.length <= 32) {
         copyObj.Length_Check = true;
       } else {
         setIsValid(false);

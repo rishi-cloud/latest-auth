@@ -28,6 +28,7 @@ const CommonDataProvider = (props) => {
     const getCommonData = async () => {
       try {
         const res = await axios.get(
+          // `/client/soKVdT2wmzd71LKYoZpv6FJMTg6yQ238.js`
           `https://${props.config.auth0Domain}/client/${props.config.clientID}.js`
         );
         const data = res.data;

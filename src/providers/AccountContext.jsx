@@ -17,7 +17,7 @@ const AccountProvider = (props) => {
   };
   console.log("configs", props);
   const webAuth = new auth0.WebAuth({
-    domain: props.config.auth0Domain,
+    domain: "https://d1aza67fhfglew.cloudfront.net",
     clientID: props.config.clientID,
     redirectUri: props.config.callbackURL,
     responseType: props.config.extraParams.response_type,
@@ -29,7 +29,7 @@ const AccountProvider = (props) => {
     overrides: { __tenant: props.config.auth0Tenant },
   });
   // const webAuth = new auth0.WebAuth({
-  //   domain: process.env.REACT_APP_AUTH0_DOMAIN,
+  //   domain: "https://d1aza67fhfglew.cloudfront.net",
   //   clientID: process.env.REACT_APP_AUTH0_CLIENT_ID,
   //   responseType: "token id_token",
   //   redirectUri: "http://localhost:4040/authorize",
@@ -59,6 +59,7 @@ const AccountProvider = (props) => {
     return new Promise((resolve, reject) => {
       const variables = {
         connection: "Test-CustomDB",
+        // connection: "Username-Password-Authentication",
         email,
         password,
         userMetadata,
@@ -111,8 +112,8 @@ const AccountProvider = (props) => {
     return new Promise((resolve, reject) => {
       webAuth.login(
         {
-          // realm: "Test-CustomDB",
           realm: "Test-CustomDB",
+          // realm: "Username-Password-Authentication",
           username,
           password,
           onRedirecting: function (done) {

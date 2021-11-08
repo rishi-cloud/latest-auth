@@ -31,6 +31,9 @@ export default function SignupContainer(props) {
     Lower_case_Upper_Case_Numbers: false,
     Length_Check: false,
     Non_empty_Password_Required: false,
+    UpperCaseCheck: false,
+    LowerCaseCheck: false,
+    NumberCheck: false,
   });
   const [SignupError, setSignupError] = useState({
     email: "",
