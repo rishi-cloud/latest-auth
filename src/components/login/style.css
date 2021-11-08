@@ -301,6 +301,23 @@ input:-webkit-autofill {
   text-align: center;
 }
 
+.forgotPasswordContainer{
+  height: 20px;
+  margin-bottom: 1rem;
+}
+.forgotPassword{
+  border: none;
+  background-color: inherit;
+  margin: 0px;
+  color: #1671EE;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+}
+.forgotPassword:focus{
+    outline: none;
+}
+
 @media only screen and (min-width: 700px) {
   .LoginContainer {
     flex-direction: row;

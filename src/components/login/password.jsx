@@ -15,7 +15,7 @@ const PasswordFlow = (props) => {
     onSubmit,
     trackClickEvent,
     LoginText,
-    handleForgotPasswordClick
+    handleForgotPasswordClick,
   } = props;
 
   return (
@@ -98,9 +98,15 @@ const PasswordFlow = (props) => {
               onChange={onChange}
             />
           </div>
-          <div className="forgotPasswordContainer">
-              <button className="forgotPassword" onClick={handleForgotPasswordClick}>Forgot password?</button>
-            </div>
+        </div>
+        <div className="forgotPasswordContainer">
+          <button
+            type="button"
+            className="forgotPassword"
+            onClick={handleForgotPasswordClick}
+          >
+            Forgot password?
+          </button>
         </div>
       </>
       <button

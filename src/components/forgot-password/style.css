@@ -1,0 +1,129 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,600;0,800;1,700&display=swap");
+.ForgotPasswordContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+.ForgotPasswordLeftWrapper {
+    margin-top: 2rem;
+    width: 55%;
+    padding: 0rem 2rem;
+}
+
+.ForgotPasswordIntro {
+    width: fit-content;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-family: "Poppins", sans-serif;
+}
+.ForgotPasswordIntroSubHeading {
+    color: gray;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+}
+
+.ForgotPasswordRightWrapper {
+    width: 45%;
+    padding-right: 1rem;
+    margin-top: 7.2rem;
+}
+.McAfeeLogo {
+    flex: 1;
+    width: 10rem;
+}
+.emailMeBtnWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+}
+.emailMeBtn{
+    cursor: pointer;
+    color: white;
+    padding: 0px 16px;
+    background-color: #4258FF;
+    width: 100%;
+    height: 40px;
+    font-size: 1rem;
+    line-height: 24px;
+    font-weight: 600;
+    border-radius: 24px;
+    border: none;
+    outline: none;
+}
+.emailMeBtn:focus{
+    outline: none;
+}
+
+.contactSupportWrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    line-height: 16px;
+    margin: 1rem 0rem;
+}
+.contactSupportText{
+    margin: 0rem;
+    
+}
+.contactSupportBtn{
+    border: none;
+    outline: none;
+    background-color: inherit;
+    color: #4258FF;
+}
+.contactSupportBtn:focus{
+    outline: none;
+}
+.dottedLine{
+    border-top: 1px dotted #CED0D6;
+}
+.signInBtnWrapper{
+    display: flex;
+    justify-content: center;
+
+}
+.signInBtn{
+    color: #4258FF;
+    border: none;
+    outline: none;
+    background-color: inherit;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: 600;
+    height: 20px;
+}
+.signInBtn:focus{
+    outline: none;
+}
+
+@media only screen and (max-width: 700px) {
+    .ForgotPasswordContainer{
+        flex-direction: column;
+    }
+    .ForgotPasswordLeftWrapper{
+        width: 100%;
+    }
+    .ForgotPasswordIntro{
+        height: fit-content;
+
+    }
+    .ForgotPasswordRightWrapper{
+        width: 100%;
+        padding-right: 0rem;
+        padding: 2rem;
+        margin-top: 0rem;
+    }
+
+    
+}
