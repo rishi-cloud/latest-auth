@@ -85,7 +85,10 @@ const PasswordLessFlow = (props) => {
             className="LoginInputContainer"
             style={{ border: `1px solid ${otpValid ? "#848faa" : "red"}` }}
           >
-            <div className="LoginInputLabel">
+            <div
+              className="LoginInputLabel"
+              style={{ color: otpValid ? "#848faa" : "red" }}
+            >
               {translate("one_time_passcode")}
             </div>
             <input

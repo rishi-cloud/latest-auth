@@ -69,7 +69,11 @@ const Login = (props) => {
       )}
 
       <div className="SwitchContainer">
-        <div className="Switch">{translate("or")}</div>
+        <div className="Switch">
+          <div className="Horizontal-dashedline"></div>
+          <div className="ordiv">{translate("or")}</div>
+          <div className="Horizontal-dashedline"></div>
+        </div>
 
         {switchLogin === "login-with-password" && (
           <>

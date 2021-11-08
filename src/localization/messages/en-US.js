@@ -10,9 +10,9 @@ const en = {
       "Choose your sign in method to continue",
     Enter_your_email_address_so_we_can_find_your_account:
       "Enter your email address so we can find your account.",
-    or: "or",
+    or: "OR",
     signIn_with_password: "Sign in with a password",
-    one_time_passcode: "one-time passcode",
+    one_time_passcode: "One-time passcode",
     Sign_in_with_a_onetime_passcode: "Sign in with a one-time passcode",
     continue: "Continue",
     access_denied: "Wrong email or password.",
@@ -62,10 +62,11 @@ const en = {
     Privacy_Notice: "Privacy Notice",
     and: "and",
     Sign_in_now: "Sign in now",
-    This_passcode_has_expired: "This passcode has expired",
+    This_passcode_has_expired: "This passcode has expired.",
     Password_expired_in: "Password expired in",
     We_will_send_you_a_otp_title: "We’ll send you a one-time passcode",
     We_will_send_you_a_otp_subtitle: "Enter your email address to continue.",
+    Send_new_code: "Send new code",
   },
 };
 export default en;

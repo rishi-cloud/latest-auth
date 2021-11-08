@@ -124,8 +124,8 @@ const Signup = (props) => {
               ) : null}
             </div>
           </div>
-          <div>
-            {displayRules ? (
+          <div className="Password-rules-container">
+            {displayRules || true ? (
               <>
                 <div className="Password-rules">
                   {displayablerule.map((item, index) => {
