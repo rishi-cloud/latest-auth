@@ -4,7 +4,7 @@ import "./style.css";
 import translate from "../../localization/translate";
 
 const Timer = (props) => {
-  const { TimerState, setTimer, setOtpValid } = props;
+  const { TimerState, setTimer, setOtpValid, getOtp } = props;
 
   useEffect(() => {
     let myInterval = setInterval(() => {
@@ -33,10 +33,13 @@ const Timer = (props) => {
       {TimerState.minutes === 0 && TimerState.seconds === 0 ? (
         <div className="timer-inactive">
           {translate("This_passcode_has_expired")}
+          <div className="resend-passcode" onClick={getOtp}>
+            {translate("Send_new_code")}
+          </div>
         </div>
       ) : (
         <div className="timer-active">
-          {translate("Password_expired_in")}{" "}
+          {translate("Passcode_expired_in")}{" "}
           <span style={{ fontWeight: 700 }}>
             {TimerState.minutes === 0 && TimerState.seconds > 0
               ? TimerState.seconds

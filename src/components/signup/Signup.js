@@ -32,7 +32,7 @@ const Signup = (props) => {
       <form className="InputWrapper">
         <>
           {SignupForm.email !== "" ? (
-            <div className="InputLabel">{translate("emailAddress")}</div>
+            <div className="InputLabel">{translate("email")}</div>
           ) : null}
           <div className="InputAndLogoSignup">
             <OutlineMail
@@ -124,8 +124,8 @@ const Signup = (props) => {
               ) : null}
             </div>
           </div>
-          <div>
-            {displayRules ? (
+          <div className="Password-rules-container">
+            {displayRules || true ? (
               <>
                 <div className="Password-rules">
                   {displayablerule.map((item, index) => {

@@ -71,6 +71,9 @@ export const validatePassword = (
     ...PasswordPolicyState,
   };
   const alphaNumericPolicy = AlphaNumericCheck();
+  const UpperCasePolicy = CapitalLetterCheck();
+  const LowerCasePolicy = LowerLetterCheck();
+  const NumberPolicy = NumberCheck();
   const lengthPolicy =
     rules.passwordPolicy !== "none"
       ? PasswordLengthWise(rules?.password_complexity_options?.min_length)
@@ -112,6 +115,24 @@ export const validatePassword = (
         setIsValid(false);
         copyObj.Lower_case_Upper_Case_Numbers = false;
       }
+      if (UpperCasePolicy.check(value)) {
+        copyObj.UpperCaseCheck = true;
+      } else {
+        setIsValid(false);
+        copyObj.UpperCaseCheck = false;
+      }
+      if (LowerCasePolicy.check(value)) {
+        copyObj.LowerCaseCheck = true;
+      } else {
+        setIsValid(false);
+        copyObj.LowerCaseCheck = false;
+      }
+      if (NumberPolicy.check(value)) {
+        copyObj.NumberCheck = true;
+      } else {
+        setIsValid(false);
+        copyObj.NumberCheck = false;
+      }
       break;
     case "good":
       setIsValid(true);
@@ -132,6 +153,24 @@ export const validatePassword = (
       } else {
         setIsValid(false);
         copyObj.Special_characters = false;
+      }
+      if (UpperCasePolicy.check(value)) {
+        copyObj.UpperCaseCheck = true;
+      } else {
+        setIsValid(false);
+        copyObj.UpperCaseCheck = false;
+      }
+      if (LowerCasePolicy.check(value)) {
+        copyObj.LowerCaseCheck = true;
+      } else {
+        setIsValid(false);
+        copyObj.LowerCaseCheck = false;
+      }
+      if (NumberPolicy.check(value)) {
+        copyObj.NumberCheck = true;
+      } else {
+        setIsValid(false);
+        copyObj.NumberCheck = false;
       }
       if (alphaNumericPolicy.check(value)) {
         copyObj.Lower_case_Upper_Case_Numbers = true;
@@ -159,6 +198,24 @@ export const validatePassword = (
       } else {
         setIsValid(false);
         copyObj.Lower_case_Upper_Case_Numbers = false;
+      }
+      if (UpperCasePolicy.check(value)) {
+        copyObj.UpperCaseCheck = true;
+      } else {
+        setIsValid(false);
+        copyObj.UpperCaseCheck = false;
+      }
+      if (LowerCasePolicy.check(value)) {
+        copyObj.LowerCaseCheck = true;
+      } else {
+        setIsValid(false);
+        copyObj.LowerCaseCheck = false;
+      }
+      if (NumberPolicy.check(value)) {
+        copyObj.NumberCheck = true;
+      } else {
+        setIsValid(false);
+        copyObj.NumberCheck = false;
       }
       break;
     case "low":

@@ -3,7 +3,7 @@ import { LOCALES } from "../constants";
 const fr = {
   [LOCALES.FRENCH]: {
     Welcome_back_to: "Bon retour à",
-    emailAddress: "Adresse e-mail",
+    email: "E-mail",
     password: "le mot de passe",
     signIn: "s'identifier",
     choose_your_signIn_method_continue:
@@ -11,7 +11,7 @@ const fr = {
     Enter_your_email_address_so_we_can_find_your_account:
       "Entrez votre adresse e-mail afin que nous puissions trouver votre compte.",
     Sign_in_with_a_onetime_passcode:
-      "Connectez-vous avec un code d'accès à usage unique",
+      "Connectez-vous avec un mot de passe à usage unique",
     or: "ou",
     signIn_with_password: "se connecter avec mot de passe",
     one_time_passcode: "code d'accès à usage unique",

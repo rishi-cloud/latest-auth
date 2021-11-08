@@ -17,7 +17,8 @@ const AccountProvider = (props) => {
   };
   console.log("configs", props);
   const webAuth = new auth0.WebAuth({
-    domain: "d1aza67fhfglew.cloudfront.net",
+    // domain: "d1aza67fhfglew.cloudfront.net",
+    domain: props.config.auth0Domain,
     clientID: props.config.clientID,
     redirectUri: props.config.callbackURL,
     responseType: props.config.extraParams.response_type,
@@ -29,7 +30,8 @@ const AccountProvider = (props) => {
     overrides: { __tenant: props.config.auth0Tenant },
   });
   // const webAuth = new auth0.WebAuth({
-  //   domain: "https://d1aza67fhfglew.cloudfront.net",
+  //   // domain: "https://d1aza67fhfglew.cloudfront.net",
+  //   domain: process.env.REACT_APP_AUTH0_DOMAIN,
   //   clientID: process.env.REACT_APP_AUTH0_CLIENT_ID,
   //   responseType: "token id_token",
   //   redirectUri: "http://localhost:4040/authorize",
@@ -136,6 +138,28 @@ const AccountProvider = (props) => {
     });
   };
 
+  const sendForgotPasswordLink = (email) => {
+    return new Promise((resolve, reject) => {
+      webAuth.changePassword(
+        {
+          connection: "Test-CustomDB",
+          email: email,
+        },
+        (err, authResult) => {
+          if (err) {
+            console.log(err);
+            reject(err);
+            return;
+          }
+          if (authResult) {
+            window.origin = window.location.origin;
+            resolve(authResult);
+          }
+        }
+      );
+    });
+  };
+
   return (
     <AccountContext.Provider
       value={{
@@ -148,6 +172,7 @@ const AccountProvider = (props) => {
         storeUserData,
         isAuthenticated,
         getSocialLogin,
+        sendForgotPasswordLink,
       }}
     >
       {props.children}

@@ -15,7 +15,9 @@ const PasswordFlow = (props) => {
     onSubmit,
     trackClickEvent,
     LoginText,
+    handleForgotPasswordClick,
   } = props;
+
   return (
     <>
       <div style={{ display: "flex", flexDirection: "column" }}>
@@ -27,7 +29,7 @@ const PasswordFlow = (props) => {
                 color: validateEmail(LoginForm.email) ? "#0CA77D" : "red",
               }}
             >
-              {translate("emailAddress")}
+              {translate("email")}
             </div>
           ) : null}
           <div
@@ -36,10 +38,10 @@ const PasswordFlow = (props) => {
               display: "flex",
               border:
                 LoginError.isEmailError === true
-                  ? "2px solid red"
+                  ? "1px solid red"
                   : validateEmail(LoginForm.email)
-                  ? "2px solid #0CA77D"
-                  : "",
+                  ? "1px solid #0CA77D"
+                  : "1px solid #848faa",
               backgroundColor: "#ffff",
               borderRadius: "1rem",
             }}
@@ -75,7 +77,7 @@ const PasswordFlow = (props) => {
       </div>
       {LoginError.email && <div className="Error">{LoginError.email}</div>}
       <>
-        <div className="LoginInputContainer">
+        <div className="LoginInputContainerPassword">
           {LoginForm.password !== "" ? (
             <div className="LoginInputLabel">{translate("password")}</div>
           ) : null}
@@ -96,6 +98,15 @@ const PasswordFlow = (props) => {
               onChange={onChange}
             />
           </div>
+        </div>
+        <div className="forgotPasswordContainer">
+          <button
+            type="button"
+            className="forgotPassword"
+            onClick={handleForgotPasswordClick}
+          >
+            Forgot password?
+          </button>
         </div>
       </>
       <button

@@ -152,10 +152,13 @@
   width: 10rem;
   height: 7rem;
 }
+.Password-rules-container {
+  display: flex;
+}
 .Password-rules {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   align-items: flex-start;
   margin-top: 1rem;
   background-color: transparent;
@@ -192,18 +195,19 @@
   width: 2rem;
   color: rgb(185, 70, 70);
 }
-.page-link {
+.Signup-page-link {
   color: blue;
   border: none;
   background-color: transparent;
   cursor: pointer;
   margin-top: 0.9rem;
+  padding: 2px 7px;
 }
-.page-link:hover {
+.Signup-page-link:hover {
   background-color: transparent;
   color: blue;
 }
-.page-link:focus {
+.Signup-page-link:focus {
   border: none;
   outline: none;
 }

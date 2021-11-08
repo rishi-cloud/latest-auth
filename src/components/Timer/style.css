@@ -4,6 +4,11 @@
   display: flex;
   justify-content: flex-start;
 }
+.resend-passcode {
+  margin-left: 0.4rem;
+  color: rgb(54, 123, 255);
+  cursor: pointer;
+}
 
 .timer-active {
   background: #e2ecfe;
@@ -12,6 +17,8 @@
   border-radius: 0.5rem;
 }
 .timer-inactive {
+  display: flex;
+  flex-direction: row;
   background: #ffdbde;
   margin-bottom: 0.2rem;
   padding: 0.5rem;

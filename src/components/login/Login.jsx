@@ -19,6 +19,7 @@ const Login = (props) => {
     LoginText,
     otpValid,
     setOtpValid,
+    handleForgotPasswordClick,
   } = props;
   const { utagData } = useContext(CommonDataContext);
 
@@ -43,6 +44,7 @@ const Login = (props) => {
             onSubmit={onSubmit}
             trackClickEvent={trackClickEvent}
             LoginText={LoginText}
+            handleForgotPasswordClick={handleForgotPasswordClick}
           />
         )}
 
@@ -67,7 +69,11 @@ const Login = (props) => {
       )}
 
       <div className="SwitchContainer">
-        <div className="Switch">{translate("or")}</div>
+        <div className="Switch">
+          <div className="Horizontal-dashedline"></div>
+          <div className="ordiv">{translate("or")}</div>
+          <div className="Horizontal-dashedline"></div>
+        </div>
 
         {switchLogin === "login-with-password" && (
           <>

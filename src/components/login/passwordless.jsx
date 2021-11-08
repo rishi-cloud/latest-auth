@@ -30,7 +30,7 @@ const PasswordLessFlow = (props) => {
                   color: validateEmail(LoginForm.email) ? "#0CA77D" : "red",
                 }}
               >
-                {translate("emailAddress")}
+                {translate("email")}
               </div>
             ) : null}
             <div
@@ -39,10 +39,10 @@ const PasswordLessFlow = (props) => {
                 display: "flex",
                 border:
                   LoginError.isEmailError === true
-                    ? "2px solid red"
+                    ? "1px solid red"
                     : validateEmail(LoginForm.email)
-                    ? "2px solid #0CA77D"
-                    : "",
+                    ? "1px solid #0CA77D"
+                    : "1px solid #848faa",
                 backgroundColor: "#ffff",
                 borderRadius: "1rem",
               }}
@@ -85,7 +85,10 @@ const PasswordLessFlow = (props) => {
             className="LoginInputContainer"
             style={{ border: `1px solid ${otpValid ? "#848faa" : "red"}` }}
           >
-            <div className="LoginInputLabel">
+            <div
+              className="LoginInputLabel"
+              style={{ color: otpValid ? "#848faa" : "red" }}
+            >
               {translate("one_time_passcode")}
             </div>
             <input
@@ -96,28 +99,32 @@ const PasswordLessFlow = (props) => {
             />
           </div>
           <div className="LoginOtpResendContainer" onClick={getOtp}>
-            <button className="LoginResendBtn">
-              {translate("ResendCode")}
-            </button>
+            <div className="LoginResendBtn">{translate("ResendCode")}</div>
           </div>
         </div>
       )}
       <button
         className="RequestOtp"
-        onClick={(e) => onSubmit(e) && trackClickEvent(TealiumTagValueConstans.SIGNIN_BUTTON)}
-        disabled={!validateEmail(LoginForm.email) || LoginForm.isSubmitting}
+        onClick={(e) =>
+          onSubmit(e) && trackClickEvent(TealiumTagValueConstans.SIGNIN_BUTTON)
+        }
+        disabled={
+          !validateEmail(LoginForm.email) || LoginForm.isSubmitting || !otpValid
+        }
         style={{
           backgroundColor:
-            !validateEmail(LoginForm.email) || LoginForm.isSubmitting
+            !validateEmail(LoginForm.email) ||
+            LoginForm.isSubmitting ||
+            !otpValid
               ? "gray"
               : "",
           cursor: LoginForm.isSubmitting ? "progress" : "pointer",
         }}
       >
         {LoginForm.otpAvailable ? (
-          <div>{translate("signIn")}</div>
+          <div>{translate("continue")}</div>
         ) : (
-          <div>{translate("Request_one_time_passcode")}</div>
+          <div>{translate("continue")}</div>
         )}
       </button>
 

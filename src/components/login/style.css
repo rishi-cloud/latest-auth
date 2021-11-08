@@ -64,8 +64,18 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  border: 1px solid #848faa;
   border-radius: 1rem;
+  box-shadow: inset 0 2px 2px 0 rgb(0 0 0 / 5%);
+  margin: 1rem 0;
+}
+
+.LoginInputContainerPassword {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+  border: 1px solid #848faa;
   box-shadow: inset 0 2px 2px 0 rgb(0 0 0 / 5%);
   margin: 1rem 0;
 }
@@ -134,8 +144,15 @@ input:-webkit-autofill {
   flex: 1;
   display: flex;
   flex-direction: column;
-  border-top: 1px dashed #333;
   margin-top: 1rem;
+}
+.Horizontal-dashedline {
+  border: none;
+  border-top: 1px dashed #ced0d6;
+  color: rgb(255, 255, 255);
+  background-color: #fff;
+  height: 1px;
+  width: 50%;
 }
 .LoginOtpResendContainer {
   align-self: flex-start;
@@ -148,10 +165,13 @@ input:-webkit-autofill {
 }
 
 .Switch {
-  align-self: center;
-  flex: 1;
+  display: flex;
   padding: 1rem;
   font-weight: 700;
+  align-items: center;
+}
+.ordiv {
+  margin: 0 0.5rem;
 }
 
 .SwitchBtn {
@@ -255,11 +275,11 @@ input:-webkit-autofill {
   padding: 5px;
 }
 
-.page-link:hover {
+.Login-page-link:hover {
   background-color: transparent;
   color: blue;
 }
-.page-link:focus {
+.Login-page-link:focus {
   border: none;
   outline: none;
 }
@@ -279,6 +299,23 @@ input:-webkit-autofill {
   /* or 167% */
 
   text-align: center;
+}
+
+.forgotPasswordContainer{
+  height: 20px;
+  margin-bottom: 1rem;
+}
+.forgotPassword{
+  border: none;
+  background-color: inherit;
+  margin: 0px;
+  color: #1671EE;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+}
+.forgotPassword:focus{
+    outline: none;
 }
 
 @media only screen and (min-width: 700px) {
