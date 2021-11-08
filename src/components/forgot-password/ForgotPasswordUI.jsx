@@ -3,11 +3,8 @@ import translate from "../../localization/translate";
 import { AiOutlineMail } from "react-icons/ai";
 import "./style.css";
 function ForgotPasswordUI(props) {
-  const {
-    emailDetails,
-    handleEmailChange,
-    handleEmailMe,
-  } = props;
+  const { emailDetails, handleEmailChange, handleEmailMe, setWhichPage } =
+    props;
   return (
     <div className="ForgotPasswordContainer">
       <div className="ForgotPasswordLeftWrapper">
@@ -64,12 +61,19 @@ function ForgotPasswordUI(props) {
           </button>
         </div>
         <div className="contactSupportWrapper">
-            <p className="contactSupportText">Forgot which email you used?</p>
-            <button className="contactSupportBtn">Contact Support</button>
+          <p className="contactSupportText">Forgot which email you used?</p>
+          <button className="contactSupportBtn">Contact Support</button>
         </div>
-        <hr className="dottedLine"/>
+        <hr className="dottedLine" />
         <div className="signInBtnWrapper">
-            <button className="signInBtn">Go back to sign in</button>
+          <button
+            className="signInBtn"
+            onClick={() => {
+              setWhichPage("login-page");
+            }}
+          >
+            Go back to sign in
+          </button>
         </div>
         {emailDetails.databaseMessage !== "" && (
           <div className="Error">{emailDetails.databaseMessage}</div>

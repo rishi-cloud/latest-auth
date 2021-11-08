@@ -34,7 +34,7 @@ const en = {
     invalid_recaptcha: "Select the checkbox to verify you are not a robot.",
     Enter_your_email_address_set_password_and_well_get_your_account_created:
       "Enter your email address, set a password and we’ll create your account.",
-    Already_have_a_account: "Already have a account?",
+    Already_have_a_account: "Already have an account?",
     confirm_password: "Confirm password",
     Request_one_time_passcode: "Request one-time passcode",
     ACT0104: "Invalid signon/password and max attempts exceeded",
@@ -63,7 +63,7 @@ const en = {
     and: "and",
     Sign_in_now: "Sign in now",
     This_passcode_has_expired: "This passcode has expired.",
-    Password_expired_in: "Password expired in",
+    Passcode_expired_in: "Passcode expired in",
     We_will_send_you_a_otp_title: "We’ll send you a one-time passcode",
     We_will_send_you_a_otp_subtitle: "Enter your email address to continue.",
     Send_new_code: "Send new code",

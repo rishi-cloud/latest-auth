@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { AccountContext } from "../providers/AccountContext";
+import { AppContext } from "../providers/AppContext";
 
 function ForgotPasswordContainer(props) {
   const [emailDetails, updateEmailDetails] = useState({
@@ -9,6 +10,7 @@ function ForgotPasswordContainer(props) {
   });
 
   const { sendForgotPasswordLink } = useContext(AccountContext);
+  const { setWhichPage } = useContext(AppContext);
 
   const validateEmail = (email) => {
     const re =
@@ -49,7 +51,7 @@ function ForgotPasswordContainer(props) {
   };
   const handleEmailMe = async (e) => {
     e.preventDefault();
-    console.log("forgot password link request")
+    console.log("forgot password link request");
     try {
       const res = await sendForgotPasswordLink(emailDetails.email);
       updateEmailDetails((prevEmailDetails) => {
@@ -66,15 +68,15 @@ function ForgotPasswordContainer(props) {
       });
     }
   };
-  
+
   const child = React.Children.only(props.children);
   return React.cloneElement(child, {
     ...props,
     emailDetails,
     handleEmailChange,
     handleEmailMe,
+    setWhichPage,
   });
 }
-
 
 export default ForgotPasswordContainer;
