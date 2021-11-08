@@ -3,7 +3,7 @@ import { LOCALES } from "../constants";
 const en = {
   [LOCALES.ENGLISH]: {
     Welcome_back_to: "Welcome back to",
-    emailAddress: "Email Address",
+    email: "Email",
     password: "Password",
     signIn: "Sign in",
     choose_your_signIn_method_continue:
@@ -11,10 +11,10 @@ const en = {
     Enter_your_email_address_so_we_can_find_your_account:
       "Enter your email address so we can find your account.",
     or: "or",
-    signIn_with_password: "Sign in with password",
+    signIn_with_password: "Sign in with a password",
     one_time_passcode: "one-time passcode",
-    Sign_in_with_a_onetime_passcode: "Sign in with one-time passcode",
-    continue: "continue",
+    Sign_in_with_a_onetime_passcode: "Sign in with a one-time passcode",
+    continue: "Continue",
     access_denied: "Wrong email or password.",
     too_many_attempts:
       " Your account has been blocked after multiple consecutive login attempts. We’ve sent you an email with instructions on how to unblock it.",
@@ -33,14 +33,14 @@ const en = {
       "Solve the challenge question to verify you are not a robot.",
     invalid_recaptcha: "Select the checkbox to verify you are not a robot.",
     Enter_your_email_address_set_password_and_well_get_your_account_created:
-      "Enter your email address, set a password and we'll get your account created.",
-    Already_have_a_account: "Already have a account ?",
-    confirm_password: "Confirm Password",
+      "Enter your email address, set a password and we’ll create your account.",
+    Already_have_a_account: "Already have a account?",
+    confirm_password: "Confirm password",
     Request_one_time_passcode: "Request one-time passcode",
     ACT0104: "Invalid signon/password and max attempts exceeded",
     ACT0105: "Valid signon/password but max attempts exceeded",
     ResendCode: "Resend Code",
-    Create_my_Account: "Create My Account",
+    Create_my_Account: "Create my Account",
     Sign_into_your_McAfee_account: "Sign into your McAfee account",
     Sign_In: "Sign In",
     Signing_you_in: "Signing you in",
@@ -64,6 +64,8 @@ const en = {
     Sign_in_now: "Sign in now",
     This_passcode_has_expired: "This passcode has expired",
     Password_expired_in: "Password expired in",
+    We_will_send_you_a_otp_title: "We’ll send you a one-time passcode",
+    We_will_send_you_a_otp_subtitle: "Enter your email address to continue.",
   },
 };
 export default en;

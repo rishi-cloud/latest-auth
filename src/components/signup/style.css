@@ -192,18 +192,19 @@
   width: 2rem;
   color: rgb(185, 70, 70);
 }
-.page-link {
+.Signup-page-link {
   color: blue;
   border: none;
   background-color: transparent;
   cursor: pointer;
   margin-top: 0.9rem;
+  padding: 2px 7px;
 }
-.page-link:hover {
+.Signup-page-link:hover {
   background-color: transparent;
   color: blue;
 }
-.page-link:focus {
+.Signup-page-link:focus {
   border: none;
   outline: none;
 }

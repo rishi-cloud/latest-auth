@@ -70,6 +70,10 @@ export default function LoginContainer(props) {
   const onToggle = (e) => {
     e.preventDefault();
     if (switchLogin === "login-with-otp") {
+      setLoginText({
+        title: "Sign_into_your_McAfee_account",
+        subtitle: "choose_your_signIn_method_continue",
+      });
       setToggle("login-with-password");
       fireOtpPageViewCall(TealiumTagValueConstans.LOGIN_PAGE_NAME);
       const currentPage = cookies.get("ua");
@@ -79,6 +83,10 @@ export default function LoginContainer(props) {
         cookies.set("ua", { ...currentPage, at: "password" }, { path: "/" });
       }
     } else if (switchLogin === "login-with-password") {
+      setLoginText({
+        title: "We_will_send_you_a_otp_title",
+        subtitle: "We_will_send_you_a_otp_subtitle",
+      });
       setToggle("login-with-otp");
       trackClickEvent(e.target.id);
       fireOtpPageViewCall(TealiumTagValueConstans.OTP_PAGE_NAME);

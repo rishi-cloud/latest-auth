@@ -32,7 +32,7 @@ const Signup = (props) => {
       <form className="InputWrapper">
         <>
           {SignupForm.email !== "" ? (
-            <div className="InputLabel">{translate("emailAddress")}</div>
+            <div className="InputLabel">{translate("email")}</div>
           ) : null}
           <div className="InputAndLogoSignup">
             <OutlineMail

@@ -64,8 +64,18 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  border: 1px solid #848faa;
   border-radius: 1rem;
+  box-shadow: inset 0 2px 2px 0 rgb(0 0 0 / 5%);
+  margin: 1rem 0;
+}
+
+.LoginInputContainerPassword {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  border-radius: 1rem;
+  border: 1px solid #848faa;
   box-shadow: inset 0 2px 2px 0 rgb(0 0 0 / 5%);
   margin: 1rem 0;
 }
@@ -255,11 +265,11 @@ input:-webkit-autofill {
   padding: 5px;
 }
 
-.page-link:hover {
+.Login-page-link:hover {
   background-color: transparent;
   color: blue;
 }
-.page-link:focus {
+.Login-page-link:focus {
   border: none;
   outline: none;
 }

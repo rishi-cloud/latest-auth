@@ -59,7 +59,7 @@ const SignupUI = (props) => {
 
               <div className="BottomHeadingSignUp">
                 {translate("Already_have_a_account")}
-                <p className="page-link" onClick={() => changePage()}>
+                <p className="Signup-page-link" onClick={() => changePage()}>
                   {translate("Sign_in_now")}
                 </p>
               </div>
