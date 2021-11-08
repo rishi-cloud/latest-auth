@@ -99,6 +99,7 @@ const LoginUI = (props) => {
                 otpValid={otpValid}
                 setOtpValid={setOtpValid}
                 handleForgotPasswordClick={handleForgotPasswordClick}
+                setTimer={setTimer}
               />
             </div>
           </div>

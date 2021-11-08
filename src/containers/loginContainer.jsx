@@ -74,6 +74,9 @@ export default function LoginContainer(props) {
         title: "Sign_into_your_McAfee_account",
         subtitle: "choose_your_signIn_method_continue",
       });
+      setOtpTimer(false);
+      setHideEmail(false);
+      setLoginForm({ ...LoginForm, otpAvailable: false });
       setToggle("login-with-password");
       fireOtpPageViewCall(TealiumTagValueConstans.LOGIN_PAGE_NAME);
       const currentPage = cookies.get("ua");
@@ -287,10 +290,9 @@ export default function LoginContainer(props) {
     }
   };
   const handleForgotPasswordClick = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     setWhichPage("forgotPassword-page");
-
-  }
+  };
 
   const child = React.Children.only(props.children);
   return React.cloneElement(child, {
