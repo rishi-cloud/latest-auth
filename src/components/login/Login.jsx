@@ -19,6 +19,7 @@ const Login = (props) => {
     LoginText,
     otpValid,
     setOtpValid,
+    handleForgotPasswordClick,
   } = props;
   const { utagData } = useContext(CommonDataContext);
 
@@ -43,6 +44,7 @@ const Login = (props) => {
             onSubmit={onSubmit}
             trackClickEvent={trackClickEvent}
             LoginText={LoginText}
+            handleForgotPasswordClick={handleForgotPasswordClick}
           />
         )}
 

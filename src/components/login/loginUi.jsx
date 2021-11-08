@@ -29,6 +29,7 @@ const LoginUI = (props) => {
     TimerState,
     setTimer,
     changePage,
+    handleForgotPasswordClick,
   } = props;
   const { LoginText } = useContext(CommonDataContext);
   return (
@@ -96,6 +97,7 @@ const LoginUI = (props) => {
                 LoginText={LoginText}
                 otpValid={otpValid}
                 setOtpValid={setOtpValid}
+                handleForgotPasswordClick={handleForgotPasswordClick}
               />
             </div>
           </div>

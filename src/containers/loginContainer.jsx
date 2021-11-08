@@ -286,6 +286,11 @@ export default function LoginContainer(props) {
       });
     }
   };
+  const handleForgotPasswordClick = (e) => {
+    e.preventDefault()
+    setWhichPage("forgotPassword-page");
+
+  }
 
   const child = React.Children.only(props.children);
   return React.cloneElement(child, {
@@ -311,5 +316,6 @@ export default function LoginContainer(props) {
     TimerState,
     setTimer,
     changePage,
+    handleForgotPasswordClick,
   });
 }
