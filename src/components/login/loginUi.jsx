@@ -64,6 +64,7 @@ const LoginUI = (props) => {
                     setOtpValid={setOtpValid}
                     setTimer={setTimer}
                     TimerState={TimerState}
+                    getOtp={getOtp}
                   />
                 ) : null}
                 <div className="LoginBottomHeading">

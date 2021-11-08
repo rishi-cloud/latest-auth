@@ -9,14 +9,17 @@ export const DisplayRules = (passwordRules, PasswordPolicyState) => {
     });
   if (passwordRules?.passwordPolicy === "excellent") {
     for (const key of Object.keys(PasswordPolicyState)) {
-      getKeys.push(key);
-      displayablerule.push(ruleMap[key]);
+      if (key !== "Non_empty_Password_Required") {
+        getKeys.push(key);
+        displayablerule.push(ruleMap[key]);
+      }
     }
   } else if (passwordRules?.passwordPolicy === "good") {
     for (const key of Object.keys(PasswordPolicyState)) {
       if (
-        key === "Non_empty_Password_Required" ||
-        key === "Lower_case_Upper_Case_Numbers" ||
+        key === "LowerCaseCheck" ||
+        key === "UpperCaseCheck" ||
+        key === "NumberCheck" ||
         key === "Length_Check" ||
         key === "Special_characters"
       ) {
@@ -27,8 +30,9 @@ export const DisplayRules = (passwordRules, PasswordPolicyState) => {
   } else if (passwordRules?.passwordPolicy === "fair") {
     for (const key of Object.keys(PasswordPolicyState)) {
       if (
-        key === "Non_empty_Password_Required" ||
-        key === "Lower_case_Upper_Case_Numbers" ||
+        key === "LowerCaseCheck" ||
+        key === "UpperCaseCheck" ||
+        key === "NumberCheck" ||
         key === "Length_Check"
       ) {
         getKeys.push(key);
@@ -37,7 +41,7 @@ export const DisplayRules = (passwordRules, PasswordPolicyState) => {
     }
   } else if (passwordRules?.passwordPolicy === "low") {
     for (const key of Object.keys(PasswordPolicyState)) {
-      if (key === "Non_empty_Password_Required" || key === "Length_Check") {
+      if (key === "Length_Check") {
         getKeys.push(key);
         displayablerule.push(ruleMap[key]);
       }

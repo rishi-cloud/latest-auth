@@ -144,8 +144,15 @@ input:-webkit-autofill {
   flex: 1;
   display: flex;
   flex-direction: column;
-  border-top: 1px dashed #333;
   margin-top: 1rem;
+}
+.Horizontal-dashedline {
+  border: none;
+  border-top: 1px dashed #ced0d6;
+  color: rgb(255, 255, 255);
+  background-color: #fff;
+  height: 1px;
+  width: 50%;
 }
 .LoginOtpResendContainer {
   align-self: flex-start;
@@ -158,10 +165,13 @@ input:-webkit-autofill {
 }
 
 .Switch {
-  align-self: center;
-  flex: 1;
+  display: flex;
   padding: 1rem;
   font-weight: 700;
+  align-items: center;
+}
+.ordiv {
+  margin: 0 0.5rem;
 }
 
 .SwitchBtn {
