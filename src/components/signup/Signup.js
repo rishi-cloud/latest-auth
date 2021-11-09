@@ -8,6 +8,7 @@ import { ReactComponent as PasswordCross } from "../../svg/passwordPolicyCross.s
 import { DisplayRules } from "../../utils/displayRules";
 import { ReactComponent as TickIcon } from "../../svg/tickIcon.svg";
 import translate from "../../localization/translate";
+import { FormattedMessage } from "react-intl";
 
 const Signup = (props) => {
   const {
@@ -125,7 +126,7 @@ const Signup = (props) => {
             </div>
           </div>
           <div className="Password-rules-container">
-            {displayRules || true ? (
+            {displayRules ? (
               <>
                 <div className="Password-rules">
                   {displayablerule.map((item, index) => {
@@ -228,7 +229,27 @@ const Signup = (props) => {
           )}
           <div className="PolicyLink">
             <p>
-              {translate("By_clicking")}
+              <FormattedMessage
+                id="By_clicking_Create_my_Account_you_accept_McAfee_License_Agreement_and_Privacy_Notice"
+                defaultMessage="By clicking <b>Create my Account</b> you accept <a>McAfee’s License Agreement</a> and <a>Privacy Notice</a>"
+                values={{
+                  a: (chunks) => (
+                    <a
+                      style={{ color: "rgb(66, 88, 255)" }}
+                      class="external_link"
+                      target="_blank"
+                      href="https://www.example.com/shoe"
+                    >
+                      {chunks}
+                    </a>
+                  ),
+
+                  b: (chunks) => <strong class="important">{chunks}</strong>,
+                }}
+              >
+                {(chunks) => <p>{chunks}</p>}
+              </FormattedMessage>
+              {/* {translate("By_clicking")}
               <span style={{ fontWeight: "bold" }}>
                 {" "}
                 {translate("Create_my_Account")},{" "}
@@ -240,7 +261,7 @@ const Signup = (props) => {
               {translate("and")}{" "}
               <span style={{ color: "rgb(66, 88, 255)" }}>
                 {translate("Privacy_Notice")}
-              </span>
+              </span> */}
             </p>
           </div>
           <button

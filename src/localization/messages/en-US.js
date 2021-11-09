@@ -56,17 +56,22 @@ const en = {
     check_your_spam_folder: "check your spam folder.",
     we_will_send_otp:
       "We’ll send a one-time passcode to your email address to verify your identity and sign you in.",
-    By_clicking: "By clicking",
-    McAfee_License_Agreement: "McAfee’s License Agreement",
-    you_accept: "you accept",
-    Privacy_Notice: "Privacy Notice",
-    and: "and",
     Sign_in_now: "Sign in now",
     This_passcode_has_expired: "This passcode has expired.",
     Passcode_expired_in: "Passcode expired in",
     We_will_send_you_a_otp_title: "We’ll send you a one-time passcode",
     We_will_send_you_a_otp_subtitle: "Enter your email address to continue.",
     Send_new_code: "Send new code",
+    By_clicking_Create_my_Account_you_accept_McAfee_License_Agreement_and_Privacy_Notice:
+      "By clicking <b>Create my Account</b> you accept <a>McAfee’s License Agreement</a> and <a>Privacy Notice</a>",
+    We_are_sorry_but_we_could_not_create_your_account:
+      "We’re sorry, but we couldn’t create your account",
+    we_cannot_create_an_account:
+      "We can’t create an account for {email} because your email is from a country subject to US export restrictions, or your company is on a list of prohibited organizations, either by the US or foreign government agency.",
+    Email_us_at:
+      "Email us at <b>export@mcafee.com</b> if you have any questions.",
+    Sign_in_with_a_different_email_address:
+      "Sign in with a different email address",
   },
 };
 export default en;

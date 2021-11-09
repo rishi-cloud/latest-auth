@@ -68,6 +68,8 @@ const fr = {
     Sign_in_now: "Connectez vous maintenant",
     This_passcode_has_expired: "Ce mot de passe a expiré",
     Password_expired_in: "Mot de passe expiré dans",
+    By_clicking_Create_my_Account_you_accept_McAfee_License_Agreement_and_Privacy_Notice:
+      "En cliquant sur <b>Créer mon compte</b>, vous acceptez le <a>contrat de licence</a> et l'avis de <a>confidentialité de McAfee</a>.",
   },
 };
 export default fr;

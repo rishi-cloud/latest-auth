@@ -46,6 +46,13 @@
   color: gray;
   font-size: 1.125rem;
 }
+.IntroSubHeadingWithError {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: #890611;
+  font-size: 1.125rem;
+}
 .PointsHeading {
   font-size: 2rem;
   font-weight: 600;
@@ -57,6 +64,21 @@
   font-weight: 400;
   color: grey;
   margin-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+}
+.ErrorPoints {
+  font-size: 1.125rem;
+  font-weight: 400;
+  color: #890611;
+  margin-bottom: 1rem;
+  background-color: #ffdbde;
+  padding: 10px;
+  border-radius: 5px;
+}
+.bold-id {
+  color: blue;
+  margin: 0 3px;
 }
 .Input {
   padding: 0.5rem 1rem;
@@ -215,10 +237,18 @@
   display: flex;
   flex-direction: row;
   font-family: inherit;
-  border-top: 1px dashed #ced0d6;
   padding: 0rem 0rem;
   font-size: 0.875rem;
   align-items: center;
+}
+.HorizontalSignup-dashedline {
+  border: none;
+  border-top: 1px dashed #ced0d6;
+  color: rgb(255, 255, 255);
+  background-color: #fff;
+  height: 1px;
+  width: 100%;
+  margin-top: 4px;
 }
 
 .loaderWrapper {

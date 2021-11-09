@@ -1,5 +1,5 @@
 import React, { useContext, useState, useCallback } from "react";
-import { debounce } from "lodash";
+import { debounce, set } from "lodash";
 import { AccountContext } from "../providers/AccountContext";
 import { AppContext } from "../providers/AppContext";
 import { CommonDataContext } from "../providers/CommonDataContext";
@@ -14,17 +14,14 @@ export default function SignupContainer(props) {
   const { trackClickEvent } = useContext(TrackingContext);
   const { setWhichPage } = useContext(AppContext);
   const { LoginForm, setLoginForm } = useContext(CommonDataContext);
+  const { setSignupText } = useContext(CommonDataContext);
   // Context Data
 
   // Initialized States
   const [isValid, setIsValid] = useState(false);
   const [passwordRules, setPasswordRules] = useState(null);
-  const [SignupForm, setSignupForm] = useState({
-    email: "",
-    password: "",
-    confirmPassword: "",
-    isSubmitting: false,
-  });
+  const [showSignupForm, setShowSignupForm] = useState(true);
+  const { SignupForm, setSignupForm } = useContext(CommonDataContext);
   const [PasswordPolicyState, setPasswordPolicyState] = useState({
     No_more_than_2_identical_characters_in_a_row: false,
     Special_characters: false,
@@ -90,6 +87,17 @@ export default function SignupContainer(props) {
         });
         setWhichPage("login-page");
         trackClickEvent("User-Already-Registered");
+      } else if (
+        e.code === "extensibility_error" &&
+        e.description ===
+          "Denied user registration in Pre User Registration Hook"
+      ) {
+        setShowSignupForm(false);
+        setSignupText({
+          title: "We_are_sorry_but_we_could_not_create_your_account",
+          subtitle:
+            "We can’t create an account for UA_1@gmail.ir because your email is from a country subject to US export restrictions, or your company is on a list of prohibited organizations, either by the US or foreign government agency.",
+        });
       } else {
         setSignupError({
           ...SignupError,
@@ -112,6 +120,11 @@ export default function SignupContainer(props) {
     const currentCount = cookies.get("ua");
     console.log(currentCount);
     setLoginForm({ ...LoginForm, email: "", password: "" });
+    setSignupText({
+      title: "Create_your_McAfee_account",
+      subtitle:
+        "Enter_your_email_address_set_password_and_well_get_your_account_created",
+    });
     setWhichPage("login-page");
   };
 
@@ -148,5 +161,6 @@ export default function SignupContainer(props) {
     setLoginForm,
     LoginForm,
     changePage,
+    showSignupForm,
   });
 }

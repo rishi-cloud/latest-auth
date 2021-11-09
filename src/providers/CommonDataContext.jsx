@@ -13,11 +13,22 @@ const CommonDataProvider = (props) => {
     title: "Sign_into_your_McAfee_account",
     subtitle: "choose_your_signIn_method_continue",
   });
+  const [SignupText, setSignupText] = useState({
+    title: "Create_your_McAfee_account",
+    subtitle:
+      "Enter_your_email_address_set_password_and_well_get_your_account_created",
+  });
   const [LoginForm, setLoginForm] = useState({
     email: "",
     password: "",
     otp: "",
     otpAvailable: false,
+    isSubmitting: false,
+  });
+  const [SignupForm, setSignupForm] = useState({
+    email: "",
+    password: "",
+    confirmPassword: "",
     isSubmitting: false,
   });
 
@@ -56,6 +67,10 @@ const CommonDataProvider = (props) => {
         setLoginText,
         LoginForm,
         setLoginForm,
+        SignupText,
+        setSignupText,
+        SignupForm,
+        setSignupForm,
       }}
     >
       {props.children}
