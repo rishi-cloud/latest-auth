@@ -106,6 +106,12 @@ export default function SignupContainer(props) {
         });
         trackClickEvent("failure-at-signup");
       }
+      setSignupForm({
+        ...SignupForm,
+        email: "",
+        password: "",
+        confirmPassword: "",
+      });
     }
     setLoader(false);
   };
