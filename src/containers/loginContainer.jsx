@@ -257,30 +257,31 @@ export default function LoginContainer(props) {
       isSubmitting: true,
     });
     e.preventDefault();
-    if (
-      (validateEmail(LoginForm.email) && LoginForm.password !== "") ||
-      LoginForm.isSubmitting
-    ) {
-      if (switchLogin === "login-with-password") {
+
+    if (switchLogin === "login-with-password") {
+      if (
+        (validateEmail(LoginForm.email) && LoginForm.password !== "") ||
+        LoginForm.isSubmitting
+      ) {
         await submitForLoginWithPassword();
-      } else {
-        try {
-          await submitForLoginWithOTP();
-        } catch (err) {
-          setLoginForm({
-            ...LoginForm,
-            isSubmitting: false,
-          });
-          setLoginError({
-            ...LoginError,
-            databaseError: err?.description,
-            errorCode: err?.code ?? err?.message,
-          });
-          settingCookies();
-          trackClickEvent("otp-login-failure");
-        }
-        setLoader(false);
       }
+    } else {
+      try {
+        await submitForLoginWithOTP();
+      } catch (err) {
+        setLoginForm({
+          ...LoginForm,
+          isSubmitting: false,
+        });
+        setLoginError({
+          ...LoginError,
+          databaseError: err?.description,
+          errorCode: err?.code ?? err?.message,
+        });
+        settingCookies();
+        trackClickEvent("otp-login-failure");
+      }
+      setLoader(false);
     }
   };
   const getOtp = async (e) => {

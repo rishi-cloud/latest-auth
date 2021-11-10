@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style.css";
 import translate from "../../localization/translate";
 import { ReactComponent as OutlineMail } from "../../svg/mailIcon.svg";
 import { ReactComponent as LockOutline } from "../../svg/lockIcon.svg";
 import { ReactComponent as TickIcon } from "../../svg/tickIcon.svg";
+import { ReactComponent as FillEye } from "../../svg/eyeIcon.svg";
 import { TealiumTagValueConstans } from "../../constants/TealiumConstants";
 
 const PasswordFlow = (props) => {
@@ -17,6 +18,7 @@ const PasswordFlow = (props) => {
     LoginText,
     handleForgotPasswordClick,
   } = props;
+  const [showPassword, setShowPassword] = useState(false);
   console.log("validator", validateEmail(LoginForm.email));
   return (
     <>
@@ -90,12 +92,25 @@ const PasswordFlow = (props) => {
           >
             <LockOutline className="LoginInputLogo" />
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               id="password"
               name="password"
               placeholder="Password"
               className="LoginInput"
               onChange={onChange}
+            />
+            <FillEye
+              style={{
+                height: "2rem",
+                width: "2rem",
+                marginTop: "0.8rem",
+                marginRight: "0.5rem",
+                color: "rgb(175, 174, 174)",
+                cursor: "pointer",
+              }}
+              onClick={() => {
+                showPassword ? setShowPassword(false) : setShowPassword(true);
+              }}
             />
           </div>
         </div>
