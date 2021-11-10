@@ -85,15 +85,18 @@ const PasswordLessFlow = (props) => {
             className="LoginInputContainer"
             style={{ border: `1px solid ${otpValid ? "#848faa" : "red"}` }}
           >
-            <div
-              className="LoginInputLabel"
-              style={{ color: otpValid ? "#848faa" : "red" }}
-            >
-              {translate("one_time_passcode")}
-            </div>
+            {LoginForm.otp !== "" ? (
+              <div
+                className="LoginInputLabel"
+                style={{ color: otpValid ? "#848faa" : "red" }}
+              >
+                {translate("one_time_passcode")}
+              </div>
+            ) : null}
             <input
               id="otp"
               name="otp"
+              placeholder="One-time passcode"
               className="LoginInput"
               onChange={onChange}
             />
