@@ -17,8 +17,8 @@ const AccountProvider = (props) => {
   };
   console.log("configs", props);
   const webAuth = new auth0.WebAuth({
-    // domain: "d1aza67fhfglew.cloudfront.net",
-    domain: props.config.auth0Domain,
+    domain: "d1aza67fhfglew.cloudfront.net",
+    // domain: props.config.auth0Domain,
     clientID: props.config.clientID,
     redirectUri: props.config.callbackURL,
     responseType: props.config.extraParams.response_type,

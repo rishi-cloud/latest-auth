@@ -106,12 +106,6 @@ export default function SignupContainer(props) {
         });
         trackClickEvent("failure-at-signup");
       }
-      setSignupForm({
-        ...SignupForm,
-        email: "",
-        password: "",
-        confirmPassword: "",
-      });
     }
     setLoader(false);
   };
@@ -126,6 +120,12 @@ export default function SignupContainer(props) {
     const currentCount = cookies.get("ua");
     console.log(currentCount);
     setLoginForm({ ...LoginForm, email: "", password: "" });
+    setSignupForm({
+      ...SignupForm,
+      email: "",
+      password: "",
+      confirmPassword: "",
+    });
     setSignupText({
       title: "Create_your_McAfee_account",
       subtitle:
