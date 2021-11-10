@@ -179,79 +179,85 @@ export default function LoginContainer(props) {
     onBlur(e);
   };
 
+  const submitForLoginWithPassword = async () => {
+    try {
+      setLoader(true);
+      trackClickEvent("submitting-for-login-with-password");
+      const response = await loginWithPassword(
+        LoginForm.email,
+        LoginForm.password
+      );
+      setLoginError({
+        ...LoginError,
+        databaseError: "",
+      });
+      setLoginForm({
+        ...LoginForm,
+        isSubmitting: false,
+      });
+    } catch (err) {
+      setLoginForm({
+        ...LoginForm,
+        isSubmitting: false,
+      });
+      setLoginError({
+        ...LoginError,
+        databaseError: err?.description,
+        errorCode: err?.code === null ? err.original.message : err?.code,
+      });
+      settingCookies();
+      trackClickEvent("email-password-login-failure");
+    }
+    setLoader(false);
+  };
+  const submitForLoginWithOTP = async () => {
+    if (LoginForm.otpAvailable) {
+      trackClickEvent("submitting-for-login-with-otp");
+      if (!otpValid) {
+        setLoginForm({
+          ...LoginForm,
+          isSubmitting: false,
+        });
+        setLoginError({
+          ...LoginError,
+          databaseError: "Otp has expired please resend the otp",
+          errorCode: "Otp has expired please resend the otp",
+        });
+      } else {
+        setLoader(true);
+        await otpLogin(LoginForm.email, LoginForm.otp);
+        setLoginForm({
+          ...LoginForm,
+          isSubmitting: false,
+        });
+      }
+    } else {
+      trackClickEvent("submitting-for-requesting-otp");
+      await otpStart(LoginForm.email);
+      setOtpTimer(true);
+      setLoginForm({
+        ...LoginForm,
+        isSubmitting: false,
+      });
+      setLoginForm({
+        ...LoginForm,
+        otpAvailable: true,
+      });
+      setHideEmail(true);
+    }
+  };
+
   const onSubmit = async (e) => {
     setLoginForm({
       ...LoginForm,
       isSubmitting: true,
     });
-
     e.preventDefault();
     if (switchLogin === "login-with-password") {
-      try {
-        setLoader(true);
-        trackClickEvent("submitting-for-login-with-password");
-        const response = await loginWithPassword(
-          LoginForm.email,
-          LoginForm.password
-        );
-        setLoginError({
-          ...LoginError,
-          databaseError: "",
-        });
-        setLoginForm({
-          ...LoginForm,
-          isSubmitting: false,
-        });
-      } catch (err) {
-        setLoginForm({
-          ...LoginForm,
-          isSubmitting: false,
-        });
-        setLoginError({
-          ...LoginError,
-          databaseError: err?.description,
-          errorCode: err?.code === null ? err.original.message : err?.code,
-        });
-        settingCookies();
-        trackClickEvent("email-password-login-failure");
-      }
-      setLoader(false);
+      await submitForLoginWithPassword();
     } else {
       try {
-        if (LoginForm.otpAvailable) {
-          trackClickEvent("submitting-for-login-with-otp");
-          if (!otpValid) {
-            setLoginForm({
-              ...LoginForm,
-              isSubmitting: false,
-            });
-            setLoginError({
-              ...LoginError,
-              databaseError: "Otp has expired please resend the otp",
-              errorCode: "Otp has expired please resend the otp",
-            });
-          } else {
-            setLoader(true);
-            await otpLogin(LoginForm.email, LoginForm.otp);
-            setLoginForm({
-              ...LoginForm,
-              isSubmitting: false,
-            });
-          }
-        } else {
-          trackClickEvent("submitting-for-requesting-otp");
-          await otpStart(LoginForm.email);
-          setOtpTimer(true);
-          setLoginForm({
-            ...LoginForm,
-            isSubmitting: false,
-          });
-          setLoginForm({
-            ...LoginForm,
-            otpAvailable: true,
-          });
-          setHideEmail(true);
-        }
+        await submitForLoginWithOTP();
       } catch (err) {
         setLoginForm({
           ...LoginForm,
