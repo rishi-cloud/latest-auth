@@ -17,8 +17,8 @@ const AccountProvider = (props) => {
   };
   console.log("configs", props);
   const webAuth = new auth0.WebAuth({
-    domain: "d1aza67fhfglew.cloudfront.net",
-    // domain: props.config.auth0Domain,
+    // domain: "d1aza67fhfglew.cloudfront.net",
+    domain: props.config.auth0Domain,
     clientID: props.config.clientID,
     redirectUri: props.config.callbackURL,
     responseType: props.config.extraParams.response_type,
@@ -60,8 +60,8 @@ const AccountProvider = (props) => {
     };
     return new Promise((resolve, reject) => {
       const variables = {
-        connection: "Test-CustomDB",
-        // connection: "Username-Password-Authentication",
+        // connection: "Test-CustomDB",
+        connection: "Username-Password-Authentication",
         email,
         password,
         userMetadata,
@@ -114,8 +114,8 @@ const AccountProvider = (props) => {
     return new Promise((resolve, reject) => {
       webAuth.login(
         {
-          realm: "Test-CustomDB",
-          // realm: "Username-Password-Authentication",
+          // realm: "Test-CustomDB",
+          realm: "Username-Password-Authentication",
           username,
           password,
           onRedirecting: function (done) {
@@ -142,7 +142,8 @@ const AccountProvider = (props) => {
     return new Promise((resolve, reject) => {
       webAuth.changePassword(
         {
-          connection: "Test-CustomDB",
+          // connection: "Test-CustomDB",
+          connection: "Username-Password-Authentication",
           email: email,
         },
         (err, authResult) => {
