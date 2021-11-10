@@ -64,7 +64,7 @@ const en = {
     We_are_sorry_but_we_could_not_create_your_account:
       "We’re sorry, but we couldn’t create your account",
     we_cannot_create_an_account:
-      "We can’t create an account for {email} because your email is from a country subject to US export restrictions, or your company is on a list of prohibited organizations, either by the US or foreign government agency.",
+      "We can’t create an account for <b>{email}</b> because your email is from a country subject to US export restrictions, or your company is on a list of prohibited organizations, either by the US or foreign government agency.",
     Email_us_at:
       "Email us at <b>export@mcafee.com</b> if you have any questions.",
     Sign_in_with_a_different_email_address:

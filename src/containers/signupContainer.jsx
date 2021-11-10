@@ -108,8 +108,7 @@ export default function SignupContainer(props) {
           setShowSignupForm(false);
           setSignupText({
             title: "We_are_sorry_but_we_could_not_create_your_account",
-            subtitle:
-              "We can’t create an account for UA_1@gmail.ir because your email is from a country subject to US export restrictions, or your company is on a list of prohibited organizations, either by the US or foreign government agency.",
+            subtitle: "we_cannot_create_an_account",
           });
         } else {
           setSignupError({
