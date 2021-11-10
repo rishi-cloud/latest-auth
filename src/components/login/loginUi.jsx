@@ -7,6 +7,7 @@ import translate from "../../localization/translate";
 import CircularLoader from "../../loader/CircularLoader";
 import { ReactComponent as McAfeeLogo } from "../../svg/Mcafee-Logo.svg";
 import Timer from "../Timer/index";
+import { FormattedMessage } from "react-intl";
 
 const LoginUI = (props) => {
   const {
@@ -57,7 +58,18 @@ const LoginUI = (props) => {
                 <McAfeeLogo className="Logo" />
                 <div className="LoginIntro">{translate(LoginText.title)}</div>
                 <div className="LoginIntroSubHeading">
-                  {translate(LoginText.subtitle)}
+                  <p>
+                    <FormattedMessage
+                      id={LoginText.subtitle}
+                      defaultMessage="We sent a one-time passcode to <b>{email}</b>"
+                      values={{
+                        b: (chunks) => <strong>{chunks}</strong>,
+                        email: `${LoginForm.email}`,
+                      }}
+                    >
+                      {(chunks) => <p>{chunks}</p>}
+                    </FormattedMessage>
+                  </p>
                 </div>
                 {otpTimer ? (
                   <Timer
@@ -68,6 +80,29 @@ const LoginUI = (props) => {
                     getOtp={getOtp}
                   />
                 ) : null}
+                {LoginError.errorCode && (
+                  <div className="ErrorDiv">
+                    <p>
+                      <FormattedMessage
+                        id={LoginError.errorCode}
+                        defaultMessage="We couldn’t sign you with this email and password. Try again, <b>reset your password</b>, or <b>sign in with a one-time passcode</b>."
+                        values={{
+                          b: (chunks) => (
+                            <strong
+                              className="important"
+                              style={{ color: "blue" }}
+                            >
+                              {chunks}
+                            </strong>
+                          ),
+                        }}
+                      >
+                        {(chunks) => <p>{chunks}</p>}
+                      </FormattedMessage>
+                    </p>
+                  </div>
+                )}
+                <div className="HorizontalSignup-dashedline"></div>
                 <div className="LoginBottomHeading">
                   <div>{translate("Do_not_have_an_account")}</div>
                   <div

@@ -64,9 +64,6 @@ const Login = (props) => {
           />
         )}
       </form>
-      {LoginError.errorCode && (
-        <div className="Error">{translate(LoginError.errorCode)}</div>
-      )}
 
       <div className="SwitchContainer">
         <div className="Switch">

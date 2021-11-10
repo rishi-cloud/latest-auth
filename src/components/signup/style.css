@@ -154,6 +154,10 @@
   outline: none;
   cursor: pointer;
 }
+.SubmitButton:focus {
+  outline: none;
+}
+
 .SubmitButtonActive {
   margin-top: 1rem;
   padding: 1rem 1rem;

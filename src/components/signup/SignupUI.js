@@ -41,7 +41,7 @@ const SignupUI = (props) => {
               src="https://cdn.jsdelivr.net/gh/atulrana007/McAfee-odrplat-auth0-ui/public/images/McAfee-Document-Logo1.png"
             />
             <div className="loading-text">
-              {translate("Creating your account")}...
+              {translate("Creating_your_account")}
             </div>
             <CircularLoader />
           </div>
@@ -65,7 +65,7 @@ const SignupUI = (props) => {
                         defaultMessage="We can’t create an account for <b>{email}</b> because your email is from a country subject to US export restrictions, or your company is on a list of prohibited organizations, either by the US or foreign government agency."
                         values={{
                           b: (chunks) => (
-                            <strong class="important">{chunks}</strong>
+                            <strong className="important">{chunks}</strong>
                           ),
                           email: `${SignupForm.email}`,
                         }}
@@ -76,7 +76,7 @@ const SignupUI = (props) => {
                         id="Email_us_at"
                         defaultMessage="Email us at <b>export@mcafee.com</b> if you have any questions."
                         values={{
-                          b: (chunks) => <p class="bold-id">{chunks}</p>,
+                          b: (chunks) => <p className="bold-id">{chunks}</p>,
                         }}
                       />
                     </div>

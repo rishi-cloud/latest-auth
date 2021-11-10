@@ -234,6 +234,10 @@ export default function LoginContainer(props) {
     } else {
       trackClickEvent("submitting-for-requesting-otp");
       await otpStart(LoginForm.email);
+      setLoginText({
+        title: "Welcome_back_to",
+        subtitle: "We_sent_a_otp_to_email",
+      });
       setOtpTimer(true);
       setLoginForm({
         ...LoginForm,
@@ -253,25 +257,30 @@ export default function LoginContainer(props) {
       isSubmitting: true,
     });
     e.preventDefault();
-    if (switchLogin === "login-with-password") {
-      await submitForLoginWithPassword();
-    } else {
-      try {
-        await submitForLoginWithOTP();
-      } catch (err) {
-        setLoginForm({
-          ...LoginForm,
-          isSubmitting: false,
-        });
-        setLoginError({
-          ...LoginError,
-          databaseError: err?.description,
-          errorCode: err?.code ?? err?.message,
-        });
-        settingCookies();
-        trackClickEvent("otp-login-failure");
+    if (
+      (validateEmail(LoginForm.email) && LoginForm.password !== "") ||
+      LoginForm.isSubmitting
+    ) {
+      if (switchLogin === "login-with-password") {
+        await submitForLoginWithPassword();
+      } else {
+        try {
+          await submitForLoginWithOTP();
+        } catch (err) {
+          setLoginForm({
+            ...LoginForm,
+            isSubmitting: false,
+          });
+          setLoginError({
+            ...LoginError,
+            databaseError: err?.description,
+            errorCode: err?.code ?? err?.message,
+          });
+          settingCookies();
+          trackClickEvent("otp-login-failure");
+        }
+        setLoader(false);
       }
-      setLoader(false);
     }
   };
   const getOtp = async (e) => {

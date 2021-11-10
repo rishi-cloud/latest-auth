@@ -195,7 +195,7 @@ const Signup = (props) => {
                 id="confirmPassword"
                 name="confirmPassword"
                 value={SignupForm.confirmPassword}
-                placeholder="Confirm Password"
+                placeholder="Confirm password"
                 className="Input"
                 onChange={onChange}
                 onBlur={() => setDisplayRules(false)}
@@ -228,28 +228,27 @@ const Signup = (props) => {
             <div className="Error">{translate(SignupError.errorCode)}</div>
           )}
           <div className="PolicyLink">
-            <p>
-              <FormattedMessage
-                id="By_clicking_Create_my_Account_you_accept_McAfee_License_Agreement_and_Privacy_Notice"
-                defaultMessage="By clicking <b>Create my Account</b> you accept <a>McAfee’s License Agreement</a> and <a>Privacy Notice</a>"
-                values={{
-                  a: (chunks) => (
-                    <a
-                      style={{ color: "rgb(66, 88, 255)" }}
-                      class="external_link"
-                      target="_blank"
-                      href="https://www.example.com/shoe"
-                    >
-                      {chunks}
-                    </a>
-                  ),
+            <FormattedMessage
+              id="By_clicking_Create_my_Account_you_accept_McAfee_License_Agreement_and_Privacy_Notice"
+              defaultMessage="By clicking <b>Create my account</b> you accept <a>McAfee’s License Agreement</a> and <a>Privacy Notice</a>"
+              values={{
+                a: (chunks) => (
+                  <a
+                    style={{ color: "rgb(66, 88, 255)" }}
+                    className="external_link"
+                    target="_blank"
+                    href="https://www.example.com/shoe"
+                  >
+                    {chunks}
+                  </a>
+                ),
 
-                  b: (chunks) => <strong class="important">{chunks}</strong>,
-                }}
-              >
-                {(chunks) => <p>{chunks}</p>}
-              </FormattedMessage>
-              {/* {translate("By_clicking")}
+                b: (chunks) => <strong>{chunks}</strong>,
+              }}
+            >
+              {(chunks) => <p>{chunks}</p>}
+            </FormattedMessage>
+            {/* {translate("By_clicking")}
               <span style={{ fontWeight: "bold" }}>
                 {" "}
                 {translate("Create_my_Account")},{" "}
@@ -262,7 +261,6 @@ const Signup = (props) => {
               <span style={{ color: "rgb(66, 88, 255)" }}>
                 {translate("Privacy_Notice")}
               </span> */}
-            </p>
           </div>
           <button
             className={
@@ -276,7 +274,6 @@ const Signup = (props) => {
                 : "SubmitButton"
             }
             onClick={onSubmit}
-            disabled={SignupForm.isSubmitting}
           >
             <div>{translate("Create_my_Account")}</div>
           </button>

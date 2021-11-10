@@ -62,51 +62,66 @@ export default function SignupContainer(props) {
       isSubmitting: true,
     });
     setLoader(true);
-    try {
-      trackClickEvent("submitting-for-signup");
-      const res = await SignupWithPassword(
-        SignupForm.email,
-        SignupForm.password
-      );
-      if (res.email) {
-        await loginWithPassword(SignupForm.email, SignupForm.password);
-      }
-    } catch (e) {
-      setSignupForm({
-        ...SignupForm,
-        isSubmitting: false,
-      });
-      if (e.code === "invalid_signup") {
-        setLoginText({
-          title: "Looks_like_you_already_have_an_account",
-          subtitle: "This_email_already_exists",
+    console.log("not getting inside this");
+    if (
+      SignupForm.email !== "" &&
+      SignupForm.password !== "" &&
+      SignupForm.confirmPassword !== "" &&
+      SignupForm.password === SignupForm.confirmPassword &&
+      isValid
+    ) {
+      console.log("getting inside this?");
+      try {
+        trackClickEvent("submitting-for-signup");
+        const res = await SignupWithPassword(
+          SignupForm.email,
+          SignupForm.password
+        );
+        if (res.email) {
+          await loginWithPassword(SignupForm.email, SignupForm.password);
+        }
+      } catch (e) {
+        setSignupForm({
+          ...SignupForm,
+          email: "",
+          password: "",
+          confirmPassword: "",
+          isSubmitting: false,
         });
-        setLoginForm({
-          ...LoginForm,
-          email: SignupForm.email,
-        });
-        setWhichPage("login-page");
-        trackClickEvent("User-Already-Registered");
-      } else if (
-        e.code === "extensibility_error" &&
-        e.description ===
-          "Denied user registration in Pre User Registration Hook"
-      ) {
-        setShowSignupForm(false);
-        setSignupText({
-          title: "We_are_sorry_but_we_could_not_create_your_account",
-          subtitle:
-            "We can’t create an account for UA_1@gmail.ir because your email is from a country subject to US export restrictions, or your company is on a list of prohibited organizations, either by the US or foreign government agency.",
-        });
-      } else {
-        setSignupError({
-          ...SignupError,
-          databaseError: e.description,
-          errorCode: e.code,
-        });
-        trackClickEvent("failure-at-signup");
+        if (e.code === "invalid_signup") {
+          setLoginText({
+            title: "Looks_like_you_already_have_an_account",
+            subtitle: "This_email_already_exists",
+          });
+          setLoginForm({
+            ...LoginForm,
+            email: SignupForm.email,
+            password: "",
+          });
+          setWhichPage("login-page");
+          trackClickEvent("User-Already-Registered");
+        } else if (
+          e.code === "extensibility_error" &&
+          e.description ===
+            "Denied user registration in Pre User Registration Hook"
+        ) {
+          setShowSignupForm(false);
+          setSignupText({
+            title: "We_are_sorry_but_we_could_not_create_your_account",
+            subtitle:
+              "We can’t create an account for UA_1@gmail.ir because your email is from a country subject to US export restrictions, or your company is on a list of prohibited organizations, either by the US or foreign government agency.",
+          });
+        } else {
+          setSignupError({
+            ...SignupError,
+            databaseError: e.description,
+            errorCode: e.code,
+          });
+          trackClickEvent("failure-at-signup");
+        }
       }
     }
+
     setLoader(false);
   };
   const changePage = () => {

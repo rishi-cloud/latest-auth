@@ -17,7 +17,7 @@ const PasswordFlow = (props) => {
     LoginText,
     handleForgotPasswordClick,
   } = props;
-
+  console.log("validator", validateEmail(LoginForm.email));
   return (
     <>
       <div style={{ display: "flex", flexDirection: "column" }}>
@@ -115,10 +115,18 @@ const PasswordFlow = (props) => {
           onSubmit(e) &&
           trackClickEvent(TealiumTagValueConstans.SIGNIN_CONTINUE_BUTTON)
         }
-        disabled={!validateEmail(LoginForm.email) || LoginForm.isSubmitting}
+        disabled={
+          !validateEmail(LoginForm.email) ||
+          LoginForm.password === "" ||
+          LoginForm.isSubmitting
+            ? true
+            : false
+        }
         style={{
           backgroundColor:
-            !validateEmail(LoginForm.email) || LoginForm.isSubmitting
+            !validateEmail(LoginForm.email) ||
+            LoginForm.password === "" ||
+            LoginForm.isSubmitting
               ? "gray"
               : "",
           cursor: LoginForm.isSubmitting ? "progress" : "pointer",

@@ -35,7 +35,6 @@
 }
 
 .LoginBottomHeading {
-  border-top: 1px dashed #ced0d6;
   padding: 1rem 0;
   font-size: 0.875rem;
   flex-wrap: wrap;
@@ -90,7 +89,7 @@
   color: darkgray;
 }
 .LoginInput {
-  padding: 1rem 1.5rem;
+  padding: 1rem 1rem;
   border-radius: 1rem;
   flex: 1;
   font-size: 1.3rem;
@@ -103,10 +102,23 @@ input:-webkit-autofill {
   -webkit-box-shadow: 0 0 0px 1000px #fff inset;
   box-shadow: 0 0 0px 1000px #fff inset;
 }
+.ErrorDiv {
+  background-color: #ffdbde;
+  color: #890611;
+  padding: 1rem;
+  font-size: 14px;
+  border-radius: 5px;
+}
 .Error {
   color: red;
-  padding: 14px 1rem;
+  padding: 1rem;
+  font-size: 14px;
+  border-radius: 5px;
 }
+.important {
+  font-weight: 400;
+}
+
 .RequestOtp {
   margin-top: 1rem;
   padding: 1rem 1rem;
@@ -301,21 +313,21 @@ input:-webkit-autofill {
   text-align: center;
 }
 
-.forgotPasswordContainer{
+.forgotPasswordContainer {
   height: 20px;
   margin-bottom: 1rem;
 }
-.forgotPassword{
+.forgotPassword {
   border: none;
   background-color: inherit;
   margin: 0px;
-  color: #1671EE;
+  color: #1671ee;
   font-weight: 600;
   font-size: 14px;
   line-height: 20px;
 }
-.forgotPassword:focus{
-    outline: none;
+.forgotPassword:focus {
+  outline: none;
 }
 
 @media only screen and (min-width: 700px) {

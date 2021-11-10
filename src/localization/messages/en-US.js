@@ -2,7 +2,7 @@ import { LOCALES } from "../constants";
 
 const en = {
   [LOCALES.ENGLISH]: {
-    Welcome_back_to: "Welcome back to",
+    Welcome_back_to: "Welcome back to McAfee!",
     email: "Email",
     password: "Password",
     signIn: "Sign in",
@@ -15,7 +15,8 @@ const en = {
     one_time_passcode: "One-time passcode",
     Sign_in_with_a_onetime_passcode: "Sign in with a one-time passcode",
     continue: "Continue",
-    access_denied: "Wrong email or password.",
+    access_denied:
+      "We couldn’t sign you with this email and password. Try again, <b>reset your password</b>, or <b>sign in with a one-time passcode</b>.",
     too_many_attempts:
       " Your account has been blocked after multiple consecutive login attempts. We’ve sent you an email with instructions on how to unblock it.",
     Welcome_to_dashboard: "Welcome to Dashboard",
@@ -27,20 +28,16 @@ const en = {
     password_leaked:
       "This login attempt has been blocked because the password you're using was previously disclosed through a data breach ",
     or_Signin_with: "or Sign in with:",
-    Do_not_have_an_account: "Don't have an Account ?",
-    invalid_user_password: "Wrong credentials.",
-    invalid_captcha:
-      "Solve the challenge question to verify you are not a robot.",
-    invalid_recaptcha: "Select the checkbox to verify you are not a robot.",
+    Do_not_have_an_account: "Don't have an account ?",
+    invalid_user_password:
+      "We couldn’t sign you with this email and password. Try again, <b>reset your password</b>, or <b>sign in with a one-time passcode</b>.",
     Enter_your_email_address_set_password_and_well_get_your_account_created:
       "Enter your email address, set a password and we’ll create your account.",
     Already_have_a_account: "Already have an account?",
     confirm_password: "Confirm password",
     Request_one_time_passcode: "Request one-time passcode",
-    ACT0104: "Invalid signon/password and max attempts exceeded",
-    ACT0105: "Valid signon/password but max attempts exceeded",
     ResendCode: "Resend Code",
-    Create_my_Account: "Create my Account",
+    Create_my_Account: "Create my account",
     Sign_into_your_McAfee_account: "Sign into your McAfee account",
     Sign_In: "Sign In",
     Signing_you_in: "Signing you in",
@@ -63,7 +60,7 @@ const en = {
     We_will_send_you_a_otp_subtitle: "Enter your email address to continue.",
     Send_new_code: "Send new code",
     By_clicking_Create_my_Account_you_accept_McAfee_License_Agreement_and_Privacy_Notice:
-      "By clicking <b>Create my Account</b> you accept <a>McAfee’s License Agreement</a> and <a>Privacy Notice</a>",
+      "By clicking <b>Create my account</b> you accept <a>McAfee’s License Agreement</a> and <a>Privacy Notice</a>",
     We_are_sorry_but_we_could_not_create_your_account:
       "We’re sorry, but we couldn’t create your account",
     we_cannot_create_an_account:
@@ -72,6 +69,18 @@ const en = {
       "Email us at <b>export@mcafee.com</b> if you have any questions.",
     Sign_in_with_a_different_email_address:
       "Sign in with a different email address",
+    You_have_reached_the_maximum_number_of_password_attempts:
+      "You’ve reached the maximum number of password attempts",
+    For_your_security_password_sign_in_for_email_has_been_locked_due_to_too_many_sign_in_attempts:
+      "For your security, password sign in for <b>{email}</b> has been locked due to too many sign in attempts.",
+    You_can_sign_in_with_a_otp_or_to_unlock_your_account_you_may_reset_your_password_or_Contact_Support:
+      "You can sign in with a one-time passcode, or to unlock your account, you may <a>reset your password</a> or <a>Contact Support.</a>",
+    We_just_sent_an_email_with_a_link_to_unlock_your_account_You_may_sign_in_with_a_otp_try_resetting_your_password_or_Contact_Support:
+      "We just sent an email with a link to unlock your account. You may sign in with a one-time passcode, <a>try resetting your password</a> or <a>Contact Support.</a>",
+    We_sent_a_otp_to_email: "We sent a one-time passcode to <b>{email}</b>",
+    Copyright_Text: "Copyright ©2021 McAfee , LLC",
+    FAQs: "FAQs",
+    Creating_your_account: "Creating your account...",
   },
 };
 export default en;
