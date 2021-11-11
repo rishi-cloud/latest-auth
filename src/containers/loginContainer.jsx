@@ -316,16 +316,17 @@ export default function LoginContainer(props) {
           databaseError: "Blocked user",
           errorCode: "user_blocked",
         });
+      } else {
+        setLoginError({
+          ...LoginError,
+          databaseError: `passwordless_${err?.description}`,
+          errorCode: `passwordless_${err?.code}` ?? err?.message,
+        });
       }
       setLoginForm({
         ...LoginForm,
         password: "",
         isSubmitting: false,
-      });
-      setLoginError({
-        ...LoginError,
-        databaseError: `passwordless_${err?.description}`,
-        errorCode: `passwordless_${err?.code}` ?? err?.message,
       });
       settingCookies();
       trackClickEvent("otp-login-failure");
