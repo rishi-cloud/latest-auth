@@ -119,14 +119,14 @@ const PasswordLessFlow = (props) => {
           !validateEmail(LoginForm.email) ||
           LoginForm.isSubmitting ||
           !otpValid ||
-          !LoginForm.otp
+          (LoginForm.otpAvailable && !LoginForm.otp)
         }
         style={{
           backgroundColor:
             !validateEmail(LoginForm.email) ||
             LoginForm.isSubmitting ||
             !otpValid ||
-            !LoginForm.otp
+            (LoginForm.otpAvailable && !LoginForm.otp)
               ? "gray"
               : "",
           cursor: LoginForm.isSubmitting ? "progress" : "pointer",

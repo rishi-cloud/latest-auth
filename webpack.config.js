@@ -10,7 +10,7 @@ module.exports = {
     main: lModules,
   },
   output: {
-    filename: "bundle_1_6.min.js",
+    filename: "bundle_1_7.min.js",
     path: path.resolve(__dirname, "dist"),
   },
   module: {

@@ -326,6 +326,7 @@ export default function LoginContainer(props) {
       setLoginForm({
         ...LoginForm,
         password: "",
+        otp: "",
         isSubmitting: false,
       });
       settingCookies();
