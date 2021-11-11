@@ -10,7 +10,7 @@ module.exports = {
     main: lModules,
   },
   output: {
-    filename: "bundle_reset_password.min.js",
+    filename: "bundle_reset_password_1.min.js",
     path: path.resolve(__dirname, "dist"),
   },
   module: {
