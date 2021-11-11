@@ -301,6 +301,10 @@ export default function LoginContainer(props) {
         databaseError: "",
         errorCode: "",
       });
+      setLoginForm({
+        ...LoginForm,
+        isSubmitting: false,
+      });
     } catch (err) {
       trackClickEvent("resend-otp-failure");
       setLoginError({

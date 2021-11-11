@@ -18,6 +18,7 @@ const PasswordLessFlow = (props) => {
     LoginText,
     otpValid,
   } = props;
+
   return (
     <>
       {!hideEmail && (
@@ -115,13 +116,17 @@ const PasswordLessFlow = (props) => {
           onSubmit(e) && trackClickEvent(TealiumTagValueConstans.SIGNIN_BUTTON)
         }
         disabled={
-          !validateEmail(LoginForm.email) || LoginForm.isSubmitting || !otpValid
+          !validateEmail(LoginForm.email) ||
+          LoginForm.isSubmitting ||
+          !otpValid ||
+          LoginError.errorCode
         }
         style={{
           backgroundColor:
             !validateEmail(LoginForm.email) ||
             LoginForm.isSubmitting ||
-            !otpValid
+            !otpValid ||
+            LoginError.errorCode
               ? "gray"
               : "",
           cursor: LoginForm.isSubmitting ? "progress" : "pointer",
