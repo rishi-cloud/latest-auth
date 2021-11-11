@@ -264,43 +264,71 @@ export default function LoginContainer(props) {
     setLoader(false);
   };
   const submitForLoginWithOTP = async () => {
-    if (LoginForm.otpAvailable) {
-      trackClickEvent("submitting-for-login-with-otp");
-      if (!otpValid) {
+    try {
+      if (LoginForm.otpAvailable) {
+        trackClickEvent("submitting-for-login-with-otp");
+        if (!otpValid) {
+          setLoginForm({
+            ...LoginForm,
+            isSubmitting: false,
+          });
+          setLoginError({
+            ...LoginError,
+            databaseError: "Otp has expired please resend the otp",
+            errorCode: "Otp has expired please resend the otp",
+          });
+        } else {
+          setLoader(true);
+          await otpLogin(LoginForm.email, LoginForm.otp);
+          setLoginForm({
+            ...LoginForm,
+            isSubmitting: false,
+          });
+        }
+      } else {
+        trackClickEvent("submitting-for-requesting-otp");
+        await otpStart(LoginForm.email);
+        setLoginText({
+          title: "Welcome_back_to",
+          subtitle: "We_sent_a_otp_to_email",
+        });
+        setOtpTimer(true);
         setLoginForm({
           ...LoginForm,
           isSubmitting: false,
+        });
+        setLoginForm({
+          ...LoginForm,
+          otpAvailable: true,
+        });
+        setHideEmail(true);
+      }
+    } catch (err) {
+      if (err.code === "too_many_attempts") {
+        setLoginText({
+          title: "You_have_reached_the_maximum_number_of_password_attempts",
+          subtitle: "too_many_attempts",
         });
         setLoginError({
           ...LoginError,
-          databaseError: "Otp has expired please resend the otp",
-          errorCode: "Otp has expired please resend the otp",
-        });
-      } else {
-        setLoader(true);
-        await otpLogin(LoginForm.email, LoginForm.otp);
-        setLoginForm({
-          ...LoginForm,
-          isSubmitting: false,
+          // databaseError: err?.description,
+          // errorCode: err?.code === null ? err.original.message : err?.code,
+          databaseError: "Blocked user",
+          errorCode: "user_blocked",
         });
       }
-    } else {
-      trackClickEvent("submitting-for-requesting-otp");
-      await otpStart(LoginForm.email);
-      setLoginText({
-        title: "Welcome_back_to",
-        subtitle: "We_sent_a_otp_to_email",
-      });
-      setOtpTimer(true);
       setLoginForm({
         ...LoginForm,
+        password: "",
         isSubmitting: false,
       });
-      setLoginForm({
-        ...LoginForm,
-        otpAvailable: true,
+      setLoginError({
+        ...LoginError,
+        databaseError: `passwordless_${err?.description}`,
+        errorCode: `passwordless_${err?.code}` ?? err?.message,
       });
-      setHideEmail(true);
+      settingCookies();
+      trackClickEvent("otp-login-failure");
     }
   };
 
@@ -318,35 +346,7 @@ export default function LoginContainer(props) {
         await submitForLoginWithPassword();
       }
     } else {
-      try {
-        await submitForLoginWithOTP();
-      } catch (err) {
-        if (err.errorCode === "too_many_attempts") {
-          setLoginText({
-            title: "You_have_reached_the_maximum_number_of_password_attempts",
-            subtitle: "too_many_attempts",
-          });
-          setLoginError({
-            ...LoginError,
-            // databaseError: err?.description,
-            // errorCode: err?.code === null ? err.original.message : err?.code,
-            databaseError: "Blocked user",
-            errorCode: "user_blocked",
-          });
-        }
-        setLoginForm({
-          ...LoginForm,
-          password: "",
-          isSubmitting: false,
-        });
-        setLoginError({
-          ...LoginError,
-          databaseError: `passwordless_${err?.description}`,
-          errorCode: `passwordless_${err?.code}` ?? err?.message,
-        });
-        settingCookies();
-        trackClickEvent("otp-login-failure");
-      }
+      await submitForLoginWithOTP();
       setLoader(false);
     }
   };
