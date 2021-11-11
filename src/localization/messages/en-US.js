@@ -36,7 +36,7 @@ const en = {
     Already_have_a_account: "Already have an account?",
     confirm_password: "Confirm password",
     Request_one_time_passcode: "Request one-time passcode",
-    ResendCode: "Resend Code",
+    ResendCode: "Resend code",
     Create_my_Account: "Create my account",
     Sign_into_your_McAfee_account: "Sign into your McAfee account",
     Sign_In: "Sign In",
@@ -81,6 +81,10 @@ const en = {
     Copyright_Text: "Copyright ©2021 McAfee , LLC",
     FAQs: "FAQs",
     Creating_your_account: "Creating your account...",
+    passwordless_invalid_user_password:
+      "We couldn’t sign you with this passcode. <rotp>Try again or resend code.</rotp>",
+    passwordless_access_denied:
+      "We couldn’t sign you with this passcode. <rotp>Try again or resend code.</rotp>",
   },
 };
 export default en;

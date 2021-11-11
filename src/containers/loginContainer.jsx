@@ -275,8 +275,8 @@ export default function LoginContainer(props) {
         });
         setLoginError({
           ...LoginError,
-          databaseError: err?.description,
-          errorCode: err?.code ?? err?.message,
+          databaseError: `passwordless_${err?.description}`,
+          errorCode: `passwordless_${err?.code}` ?? err?.message,
         });
         settingCookies();
         trackClickEvent("otp-login-failure");
@@ -296,6 +296,11 @@ export default function LoginContainer(props) {
       setOtpTimer(false);
       setOtpTimer(true);
       setOtpValid(true);
+      setLoginError({
+        ...LoginError,
+        databaseError: "",
+        errorCode: "",
+      });
     } catch (err) {
       trackClickEvent("resend-otp-failure");
       setLoginError({

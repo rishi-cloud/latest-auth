@@ -94,6 +94,9 @@ const PasswordLessFlow = (props) => {
               </div>
             ) : null}
             <input
+              type="text"
+              pattern="\d*"
+              maxlength="6"
               id="otp"
               name="otp"
               placeholder="One-time passcode"

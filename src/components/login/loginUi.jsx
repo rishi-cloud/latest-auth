@@ -71,7 +71,7 @@ const LoginUI = (props) => {
                     </FormattedMessage>
                   </p>
                 </div>
-                {otpTimer ? (
+                {otpTimer && !LoginError.errorCode ? (
                   <Timer
                     initialMinute={3}
                     setOtpValid={setOtpValid}
@@ -91,6 +91,15 @@ const LoginUI = (props) => {
                             <strong
                               className="important"
                               style={{ color: "blue" }}
+                            >
+                              {chunks}
+                            </strong>
+                          ),
+                          rotp: (chunks) => (
+                            <strong
+                              className="important"
+                              style={{ color: "blue", cursor: "pointer" }}
+                              onClick={getOtp}
                             >
                               {chunks}
                             </strong>
