@@ -57,10 +57,6 @@ export default function SignupContainer(props) {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    setSignupForm({
-      ...SignupForm,
-      isSubmitting: true,
-    });
     setLoader(true);
     console.log("not getting inside this");
     if (
@@ -70,7 +66,10 @@ export default function SignupContainer(props) {
       SignupForm.password === SignupForm.confirmPassword &&
       isValid
     ) {
-      console.log("getting inside this?");
+      setSignupForm({
+        ...SignupForm,
+        isSubmitting: true,
+      });
       try {
         trackClickEvent("submitting-for-signup");
         const res = await SignupWithPassword(
