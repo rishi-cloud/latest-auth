@@ -7,6 +7,8 @@ import translate from "../../localization/translate";
 import CircularLoader from "../../loader/CircularLoader";
 import { ReactComponent as McAfeeLogo } from "../../svg/Mcafee-Logo.svg";
 import Timer from "../Timer/index";
+import PasswordBlockScreen from "./view/PasswordBlockScreen";
+import OtpBlockScreen from "./view/OtpBlockScreen";
 import { FormattedMessage } from "react-intl";
 
 const LoginUI = (props) => {
@@ -31,8 +33,18 @@ const LoginUI = (props) => {
     setTimer,
     changePage,
     handleForgotPasswordClick,
+    blockScreenToggle,
   } = props;
-  const { LoginText } = useContext(CommonDataContext);
+  const { LoginText, utagData } = useContext(CommonDataContext);
+
+  const trackClickEvent = (navElement) => {
+    let utag = window.utag;
+    let updatedUtagData = { ...utagData };
+    updatedUtagData["tm_global_tealium_calltype"] = "manual";
+    updatedUtagData["tm_global_navigation_element"] = navElement;
+    updatedUtagData["tm_global_navigation_element_click"] = "true";
+    utag?.link(updatedUtagData);
+  };
   return (
     <>
       {loader ? (
@@ -57,7 +69,15 @@ const LoginUI = (props) => {
               <div className="LoginWelcomeContainer">
                 <McAfeeLogo className="Logo" />
                 <div className="LoginIntro">{translate(LoginText.title)}</div>
-                <div className="LoginIntroSubHeading">
+                <div
+                  className="LoginIntroSubHeading"
+                  style={{
+                    display:
+                      LoginError.errorCode === "user_blocked"
+                        ? "none"
+                        : "block",
+                  }}
+                >
                   <p>
                     <FormattedMessage
                       id={LoginText.subtitle}
@@ -90,16 +110,57 @@ const LoginUI = (props) => {
                           b: (chunks) => (
                             <strong
                               className="important"
-                              style={{ color: "blue" }}
+                              style={{ color: "#1671ee" }}
                             >
+                              {chunks}
+                            </strong>
+                          ),
+                          br: (chunks) => (
+                            <strong style={{ color: "#890611" }}>
                               {chunks}
                             </strong>
                           ),
                           rotp: (chunks) => (
                             <strong
                               className="important"
-                              style={{ color: "blue", cursor: "pointer" }}
+                              style={{ color: "#1671ee", cursor: "pointer" }}
                               onClick={getOtp}
+                            >
+                              {chunks}
+                            </strong>
+                          ),
+                          email: `${LoginForm.email}`,
+                        }}
+                      >
+                        {(chunks) => <p>{chunks}</p>}
+                      </FormattedMessage>
+                    </p>
+                  </div>
+                )}
+                <div className="HorizontalSignup-dashedline"></div>
+                {LoginError.errorCode !== "user_blocked" ? (
+                  <div className="LoginBottomHeading">
+                    <div>{translate("Do_not_have_an_account")}</div>
+                    <div
+                      className="Login-page-link"
+                      onClick={() => {
+                        changePage();
+                      }}
+                    >
+                      {translate("Create_one_now")}
+                    </div>
+                  </div>
+                ) : (
+                  <div className="LoginBottomHeading">
+                    <p>
+                      <FormattedMessage
+                        id="We_just_sent_an_email_with_a_link_to_unlock_your_account_You_may_sign_in_with_a_otp_try_resetting_your_password_or_Contact_Support"
+                        defaultMessage="We sent a one-time passcode to <b>{email}</b>"
+                        values={{
+                          a: (chunks) => (
+                            <strong
+                              className="important"
+                              style={{ color: "#1671ee", cursor: "pointer" }}
                             >
                               {chunks}
                             </strong>
@@ -111,41 +172,45 @@ const LoginUI = (props) => {
                     </p>
                   </div>
                 )}
-                <div className="HorizontalSignup-dashedline"></div>
-                <div className="LoginBottomHeading">
-                  <div>{translate("Do_not_have_an_account")}</div>
-                  <div
-                    className="Login-page-link"
-                    onClick={() => {
-                      changePage();
-                    }}
-                  >
-                    {translate("Create_one_now")}
-                  </div>
-                </div>
               </div>
             </div>
-            <div className="LoginRightWrapper">
-              <Login
-                LoginError={LoginError}
+            {LoginError.errorCode !== "user_blocked" ? (
+              <div className="LoginRightWrapper">
+                <Login
+                  LoginError={LoginError}
+                  onChange={onChange}
+                  switchLogin={switchLogin}
+                  onSubmit={onSubmit}
+                  LoginForm={LoginForm}
+                  onToggle={onToggle}
+                  onPressContinue={onPressContinue}
+                  Continue={Continue}
+                  getOtp={getOtp}
+                  validateEmail={validateEmail}
+                  socialBtn={socialBtn}
+                  hideEmail={hideEmail}
+                  LoginText={LoginText}
+                  otpValid={otpValid}
+                  setOtpValid={setOtpValid}
+                  handleForgotPasswordClick={handleForgotPasswordClick}
+                  setTimer={setTimer}
+                  trackClickEvent={trackClickEvent}
+                />
+              </div>
+            ) : switchLogin === "login-with-password" ? (
+              <PasswordBlockScreen blockScreenToggle={blockScreenToggle} />
+            ) : (
+              <OtpBlockScreen
                 onChange={onChange}
-                switchLogin={switchLogin}
-                onSubmit={onSubmit}
+                LoginError={LoginError}
                 LoginForm={LoginForm}
-                onToggle={onToggle}
-                onPressContinue={onPressContinue}
-                Continue={Continue}
-                getOtp={getOtp}
                 validateEmail={validateEmail}
-                socialBtn={socialBtn}
-                hideEmail={hideEmail}
+                onSubmit={onSubmit}
+                trackClickEvent={trackClickEvent}
                 LoginText={LoginText}
-                otpValid={otpValid}
-                setOtpValid={setOtpValid}
                 handleForgotPasswordClick={handleForgotPasswordClick}
-                setTimer={setTimer}
               />
-            </div>
+            )}
           </div>
         </>
       )}

@@ -41,11 +41,12 @@
   display: flex;
 }
 .Login-page-link {
-  color: blue;
+  color: #1671ee;
   border: none;
   background-color: transparent;
   cursor: pointer;
   padding: 0 7px;
+  font-weight: 600;
 }
 
 .LoginWrapperContainer {
@@ -166,6 +167,7 @@ input:-webkit-autofill {
   height: 1px;
   width: 50%;
 }
+
 .LoginOtpResendContainer {
   align-self: flex-start;
 }
@@ -200,6 +202,28 @@ input:-webkit-autofill {
   font-size: inherit;
   outline: none;
   cursor: pointer;
+}
+.EmailBlockSwitchBtn {
+  background-color: rgb(54, 123, 255);
+  color: #fff;
+  padding: 1rem 1rem;
+  display: flex;
+  border-radius: 6rem;
+  border: 2px solid rgb(54, 123, 255);
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 2px 2px 0 rgb(0 0 0 / 5%);
+  font-size: inherit;
+  outline: none;
+  cursor: pointer;
+}
+.BlockUserDiv {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  margin: 1rem 2rem;
 }
 .Logo {
   width: 10rem;
@@ -290,7 +314,7 @@ input:-webkit-autofill {
 
 .Login-page-link:hover {
   background-color: transparent;
-  color: blue;
+  color: #1671ee;
 }
 .Login-page-link:focus {
   border: none;
@@ -302,7 +326,7 @@ input:-webkit-autofill {
   align-items: center;
   justify-content: center;
 }
-.opt-info {
+.otp-info {
   padding: 1rem 0.2rem;
   font-style: normal;
   font-weight: normal;
@@ -312,6 +336,22 @@ input:-webkit-autofill {
   /* or 167% */
 
   text-align: center;
+}
+.block-otp-info {
+  padding: 1rem 0.2rem;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1rem;
+  line-height: 20px;
+  color: #6d7895;
+  margin: 1rem 2rem;
+  /* or 167% */
+
+  text-align: center;
+}
+.LineWrapper {
+  display: flex;
+  margin: 0 5rem;
 }
 
 .forgotPasswordContainer {
@@ -329,6 +369,9 @@ input:-webkit-autofill {
 }
 .forgotPassword:focus {
   outline: none;
+}
+.otpBlockWrapper {
+  flex: 1;
 }
 
 @media only screen and (min-width: 700px) {
@@ -355,5 +398,8 @@ input:-webkit-autofill {
   }
   .LoginOtpMessage {
     flex-direction: row;
+  }
+  .BlockUserDiv {
+    margin: 6rem 2rem;
   }
 }

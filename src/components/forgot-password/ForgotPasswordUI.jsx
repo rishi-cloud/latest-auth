@@ -3,8 +3,13 @@ import translate from "../../localization/translate";
 import { AiOutlineMail } from "react-icons/ai";
 import "./style.css";
 function ForgotPasswordUI(props) {
-  const { emailDetails, handleEmailChange, handleEmailMe, setWhichPage } =
-    props;
+  const {
+    emailDetails,
+    handleEmailChange,
+    handleEmailMe,
+    setWhichPage,
+    setLoginText,
+  } = props;
   return (
     <div className="ForgotPasswordContainer">
       <div className="ForgotPasswordLeftWrapper">
@@ -70,6 +75,10 @@ function ForgotPasswordUI(props) {
             className="signInBtn"
             onClick={() => {
               setWhichPage("login-page");
+              setLoginText({
+                title: "Sign_into_your_McAfee_account",
+                subtitle: "choose_your_signIn_method_continue",
+              });
             }}
           >
             Go back to sign in

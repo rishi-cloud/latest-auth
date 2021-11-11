@@ -19,7 +19,6 @@ const PasswordFlow = (props) => {
     handleForgotPasswordClick,
   } = props;
   const [showPassword, setShowPassword] = useState(false);
-  console.log("validator", validateEmail(LoginForm.email));
   return (
     <>
       <div style={{ display: "flex", flexDirection: "column" }}>

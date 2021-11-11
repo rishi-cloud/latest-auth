@@ -19,18 +19,10 @@ const Login = (props) => {
     LoginText,
     otpValid,
     setOtpValid,
+    trackClickEvent,
     handleForgotPasswordClick,
   } = props;
   const { utagData } = useContext(CommonDataContext);
-
-  const trackClickEvent = (navElement) => {
-    let utag = window.utag;
-    let updatedUtagData = { ...utagData };
-    updatedUtagData["tm_global_tealium_calltype"] = "manual";
-    updatedUtagData["tm_global_navigation_element"] = navElement;
-    updatedUtagData["tm_global_navigation_element_click"] = "true";
-    utag?.link(updatedUtagData);
-  };
 
   return (
     <div className="LoginWrapperContainer">
@@ -79,7 +71,7 @@ const Login = (props) => {
                 {translate("Sign_in_with_a_onetime_passcode")}
               </div>
             </button>
-            <div className="opt-info">{translate("we_will_send_otp")}</div>
+            <div className="otp-info">{translate("we_will_send_otp")}</div>
           </>
         )}
         {switchLogin === "login-with-otp" && (

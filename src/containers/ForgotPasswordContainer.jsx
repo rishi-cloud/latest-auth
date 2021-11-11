@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import { AccountContext } from "../providers/AccountContext";
 import { AppContext } from "../providers/AppContext";
+import { CommonDataContext } from "../providers/CommonDataContext";
 
 function ForgotPasswordContainer(props) {
   const [emailDetails, updateEmailDetails] = useState({
@@ -8,6 +9,7 @@ function ForgotPasswordContainer(props) {
     emailError: "",
     databaseMessage: "",
   });
+  const { setLoginText } = useContext(CommonDataContext);
 
   const { sendForgotPasswordLink } = useContext(AccountContext);
   const { setWhichPage } = useContext(AppContext);
@@ -76,6 +78,7 @@ function ForgotPasswordContainer(props) {
     handleEmailChange,
     handleEmailMe,
     setWhichPage,
+    setLoginText,
   });
 }
 

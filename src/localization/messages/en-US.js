@@ -71,8 +71,8 @@ const en = {
       "Sign in with a different email address",
     You_have_reached_the_maximum_number_of_password_attempts:
       "You’ve reached the maximum number of password attempts",
-    For_your_security_password_sign_in_for_email_has_been_locked_due_to_too_many_sign_in_attempts:
-      "For your security, password sign in for <b>{email}</b> has been locked due to too many sign in attempts.",
+    user_blocked:
+      "For your security, password sign in for <br>{email}</br> has been locked due to too many sign in attempts.",
     You_can_sign_in_with_a_otp_or_to_unlock_your_account_you_may_reset_your_password_or_Contact_Support:
       "You can sign in with a one-time passcode, or to unlock your account, you may <a>reset your password</a> or <a>Contact Support.</a>",
     We_just_sent_an_email_with_a_link_to_unlock_your_account_You_may_sign_in_with_a_otp_try_resetting_your_password_or_Contact_Support:
