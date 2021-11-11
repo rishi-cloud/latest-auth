@@ -2,16 +2,16 @@ import React, { useContext } from "react";
 import { AppContext } from "./providers/AppContext";
 import Login from "./components/login/index";
 import Signup from "./components/signup/index";
-import { CommonDataContext } from "./providers/CommonDataContext";
-import Cookies from "universal-cookie/es6";
+// import { CommonDataContext } from "./providers/CommonDataContext";
+// import Cookies from "universal-cookie/es6";
 import { SettingContext } from "./providers/SettingProvider";
-import CircularLoader from "./loader/CircularLoader";
-import { ReactComponent as McAfeeLogo } from "./svg/Mcafee-Logo.svg";
-import ForgotPassword from './components/forgot-password/index'
+// import CircularLoader from "./loader/CircularLoader";
+// import { ReactComponent as McAfeeLogo } from "./svg/Mcafee-Logo.svg";
+import ForgotPassword from "./components/forgot-password/index";
 
 function Main() {
   const { whichPage, setWhichPage } = useContext(AppContext);
-  const { setting } = useContext(SettingContext);
+  // const { setting } = useContext(SettingContext);
   const returnPage = (whichPage) => {
     switch (whichPage) {
       case "signup-page":

@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  render,
-  screen,
-  waitFor,
-  fireEvent,
-  act,
-} from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
 import { BrowserRouter as Router } from "react-router-dom";
@@ -16,7 +10,7 @@ import { AccountProvider } from "../../../providers/AccountContext";
 import { TrackingProvider } from "../../../providers/TrackingProvider";
 import { SettingProvider } from "../../../providers/SettingProvider";
 
-import axios from "axios";
+// import axios from "axios";
 import SignupUI from "../SignupUI";
 import SignupContainer from "../../../containers/signupContainer";
 

@@ -219,49 +219,49 @@ export default function LoginContainer(props) {
   };
 
   const submitForLoginWithPassword = async () => {
-    // try {
-    //   setLoader(true);
-    //   trackClickEvent("submitting-for-login-with-password");
-    //   const response = await loginWithPassword(
-    //     LoginForm.email,
-    //     LoginForm.password
-    //   );
-    //   setLoginError({
-    //     ...LoginError,
-    //     databaseError: "",
-    //   });
-    //   setLoginForm({
-    //     ...LoginForm,
-    //     isSubmitting: false,
-    //   });
-    // } catch (err) {
-    //   if (err.code === "too_many_attempts") {
-    setLoginText({
-      title: "You_have_reached_the_maximum_number_of_password_attempts",
-      subtitle: "too_many_attempts",
-    });
-    setLoginError({
-      ...LoginError,
-      // databaseError: err?.description,
-      // errorCode: err?.code === null ? err.original.message : err?.code,
-      databaseError: "Blocked user",
-      errorCode: "user_blocked",
-    });
-    //   } else {
-    //     setLoginError({
-    //       ...LoginError,
-    //       databaseError: err?.description,
-    //       errorCode: err?.code === null ? err.original.message : err?.code,
-    //     });
-    //   }
-    setLoginForm({
-      ...LoginForm,
-      isSubmitting: false,
-    });
-    //   settingCookies();
-    //   trackClickEvent("email-password-login-failure");
-    // }
-    // setLoader(false);
+    try {
+      setLoader(true);
+      trackClickEvent("submitting-for-login-with-password");
+      const response = await loginWithPassword(
+        LoginForm.email,
+        LoginForm.password
+      );
+      setLoginError({
+        ...LoginError,
+        databaseError: "",
+      });
+      setLoginForm({
+        ...LoginForm,
+        isSubmitting: false,
+      });
+    } catch (err) {
+      if (err.code === "too_many_attempts") {
+        setLoginText({
+          title: "You_have_reached_the_maximum_number_of_password_attempts",
+          subtitle: "too_many_attempts",
+        });
+        setLoginError({
+          ...LoginError,
+          // databaseError: err?.description,
+          // errorCode: err?.code === null ? err.original.message : err?.code,
+          databaseError: "Blocked user",
+          errorCode: "user_blocked",
+        });
+      } else {
+        setLoginError({
+          ...LoginError,
+          databaseError: err?.description,
+          errorCode: err?.code === null ? err.original.message : err?.code,
+        });
+      }
+      setLoginForm({
+        ...LoginForm,
+        isSubmitting: false,
+      });
+      settingCookies();
+      trackClickEvent("email-password-login-failure");
+    }
+    setLoader(false);
   };
   const submitForLoginWithOTP = async () => {
     if (LoginForm.otpAvailable) {
@@ -305,48 +305,50 @@ export default function LoginContainer(props) {
   };
 
   const onSubmit = async (e) => {
-    // e.preventDefault();
-    // setLoginForm({
-    //   ...LoginForm,
-    //   isSubmitting: true,
-    // });
-    // if (switchLogin === "login-with-password") {
-    //   if (
-    //     (validateEmail(LoginForm.email) && LoginForm.password !== "") ||
-    //     LoginForm.isSubmitting
-    //   ) {
-    //     await submitForLoginWithPassword();
-    //   }
-    // } else {
-    //   try {
-    //     await submitForLoginWithOTP();
-    //   } catch (err) {
-    //     if (err.errorCode === "too_many_attempts") {
-    setLoginText({
-      title: "You_have_reached_the_maximum_number_of_password_attempts",
-      subtitle: "too_many_attempts",
-    });
-    setLoginError({
-      ...LoginError,
-      // databaseError: err?.description,
-      // errorCode: err?.code === null ? err.original.message : err?.code,
-      databaseError: "Blocked user",
-      errorCode: "user_blocked",
-    });
-    // }
+    e.preventDefault();
     setLoginForm({
       ...LoginForm,
-      isSubmitting: false,
+      isSubmitting: true,
     });
-    //     setLoginError({
-    //       ...LoginError,
-    //       databaseError: `passwordless_${err?.description}`,
-    //       errorCode: `passwordless_${err?.code}` ?? err?.message,
-    //     });
-    //     settingCookies();
-    //     trackClickEvent("otp-login-failure");
-    //   }
-    //   setLoader(false);
+    if (switchLogin === "login-with-password") {
+      if (
+        (validateEmail(LoginForm.email) && LoginForm.password !== "") ||
+        LoginForm.isSubmitting
+      ) {
+        await submitForLoginWithPassword();
+      }
+    } else {
+      try {
+        await submitForLoginWithOTP();
+      } catch (err) {
+        if (err.errorCode === "too_many_attempts") {
+          setLoginText({
+            title: "You_have_reached_the_maximum_number_of_password_attempts",
+            subtitle: "too_many_attempts",
+          });
+          setLoginError({
+            ...LoginError,
+            // databaseError: err?.description,
+            // errorCode: err?.code === null ? err.original.message : err?.code,
+            databaseError: "Blocked user",
+            errorCode: "user_blocked",
+          });
+        }
+        setLoginForm({
+          ...LoginForm,
+          password: "",
+          isSubmitting: false,
+        });
+        setLoginError({
+          ...LoginError,
+          databaseError: `passwordless_${err?.description}`,
+          errorCode: `passwordless_${err?.code}` ?? err?.message,
+        });
+        settingCookies();
+        trackClickEvent("otp-login-failure");
+      }
+      setLoader(false);
+    }
   };
   const getOtp = async (e) => {
     try {

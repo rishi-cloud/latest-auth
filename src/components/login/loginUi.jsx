@@ -150,7 +150,7 @@ const LoginUI = (props) => {
                       {translate("Create_one_now")}
                     </div>
                   </div>
-                ) : (
+                ) : switchLogin === "login-with-password" ? (
                   <div className="LoginBottomHeading">
                     <p>
                       <FormattedMessage
@@ -171,7 +171,7 @@ const LoginUI = (props) => {
                       </FormattedMessage>
                     </p>
                   </div>
-                )}
+                ) : null}
               </div>
             </div>
             {LoginError.errorCode !== "user_blocked" ? (

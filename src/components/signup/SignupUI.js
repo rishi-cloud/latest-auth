@@ -7,7 +7,6 @@ import translate from "../../localization/translate";
 import CircularLoader from "../../loader/CircularLoader";
 import { ReactComponent as McAfeeLogo } from "../../svg/Mcafee-Logo.svg";
 import { FormattedMessage } from "react-intl";
-import { Auth0Client } from "@auth0/auth0-spa-js";
 
 const SignupUI = (props) => {
   const {
@@ -20,12 +19,12 @@ const SignupUI = (props) => {
     isValid,
     SignupError,
     loader,
-    setLoginForm,
-    LoginForm,
+    // setLoginForm,
+    // LoginForm,
     changePage,
     showSignupForm,
   } = props;
-  const { setWhichPage } = useContext(AppContext);
+  // const { setWhichPage } = useContext(AppContext);
   const { SignupText } = useContext(CommonDataContext);
   return (
     <>
