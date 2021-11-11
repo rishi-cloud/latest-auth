@@ -126,7 +126,7 @@ const PasswordLessFlow = (props) => {
             !validateEmail(LoginForm.email) ||
             LoginForm.isSubmitting ||
             !otpValid ||
-            LoginError.errorCode
+            (LoginForm.otpAvailable && LoginError.errorCode)
               ? "gray"
               : "",
           cursor: LoginForm.isSubmitting ? "progress" : "pointer",
