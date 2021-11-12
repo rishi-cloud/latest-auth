@@ -10,7 +10,7 @@ module.exports = {
     main: lModules,
   },
   output: {
-    filename: "bundle_reset_password_default_db_1.min.js",
+    filename: "bundle_reset_password_custom_db_1.min.js",
     path: path.resolve(__dirname, "dist"),
   },
   module: {
